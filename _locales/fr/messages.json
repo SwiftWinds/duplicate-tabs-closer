@@ -1,162 +1,162 @@
 {
-	"options": {
-		"message": "Options",
-		"description": "Options"
-	},
-	"onDuplicateTabDetected": {
-		"message": "À la détection d'un doublon",
-		"description": "On duplicate tab detected"
-	},
-	"doNothing": {
-		"message": "Ne rien faire",
-		"description": "Do nothing"
-	},
-	"autoCloseTab": {
-		"message": "Fermer l'onglet automatiquement",
-		"description": "Close tab automatically"
-	},
-	"showPanel": {
-		"message": "Afficher le panneau",
-		"description": "Show panel"
-	},
-	"tabPriority": {
-		"message": "Priorité",
-		"description": "Priority"
-	},
-	"keepNewerTab": {
-		"message": "Conserver le nouvel onglet",
-		"description": "Keep newer tab"
-	},
-	"keepOlderTab": {
-		"message": "Conserver l'ancien onglet",
-		"description": "Keep older tab"
-	},
-	"keepReloadOlderTab": {
-		"message": "Conserver et actualiser l'ancien onglet",
-		"description": "Keep and reload older tab"
-	},
-	"keepTabWithHistory": {
-		"message": "Conserver l'onglet ayant un historique",
-		"description": "Keep tab with history"
-	},
-	"keeptabwithHttps": {
-		"message": "Conserver l'onglet avec https",
-		"description": "Keep tab with https"
-	},
-	"keepPinnedTab": {
-		"message": "Conserver l'onglet épinglé",
-		"description": "Keep pinned tab"
-	},
-	"onRemainingTab": {
-		"message": "Sur l'onglet restant",
-		"description": "On remaining tab"
-	},
 	"activateKeptTab": {
-		"message": "Activer",
-		"description": "Activate"
-	},
-	"defaultTabBehavior": {
-		"message": "Comportement par défaut de l'onglet",
-		"description": "Default tab behaviour"
-	},
-	"matchingRules": {
-		"message": "Règle de correspondance",
-		"description": "Règle de correspondance"
-	},
-	"ignoreHashPart": {
-		"message": "Ignorer la partie « hachage » de l'URL",
-		"description": "Ignore hash part in URL"
-	},
-	"ignoreSearchPart": {
-		"message": "Ignorer la partie « recherche » de l'URL",
-		"description": "Ignore search part in URL"
-	},
-	"ignorePathPart": {
-		"message": "Ignorer la partie « chemin » de l'URL",
-		"description": "Ignore path part in URL"
-	},
-	"ignore3w": {
-		"message": "Ignorer 'www' dans le nom de domaine de l'URL",
-		"description": "Ignorer 'www' dans le nom de domaine de l'URL"
-	},
-	"caseInsensitive": {
-		"message": "Ignorer la casse de l'URL",
-		"description": "Ignorer la casse de l'URL"
-	},
-	"compareWithTitle": {
-		"message": "Comparer avec le titre",
-		"description": "Compare with title"
-	},
-	"duplicatetabs": {
-		"message": "Onglets en doublon",
-		"description": "Duplicate tabs"
-	},
-	"scope": {
-		"message": "Cadre",
-		"description": "Scope"
+		"description": "Activate",
+		"message": "Activer"
 	},
 	"activewindow": {
-		"message": "Fenêtre active",
-		"description": "Active window"
+		"description": "Active window",
+		"message": "Fenêtre active"
 	},
 	"allwindows": {
-		"message": "Toutes les fenêtres",
-		"description": "All windows"
+		"description": "All windows",
+		"message": "Toutes les fenêtres"
 	},
-	"containerActivewindow": {
-		"message": "Container dans la fenêtres active",
-		"description": "Container dans la fenêtres active"
-	},
-	"containerAllwindows": {
-		"message": "Container dans toutes les fenêtres",
-		"description": "Container dans toutes les fenêtres"
-	},
-	"hideWhiteListedDuplicateTabs": {
-		"message": "Hide whitelisted duplicate tabs",
-		"description": "Hide whitelisted duplicate tabs"
-	},
-	"groupDuplicateTabs": {
-		"message": "Group duplicate tabs",
-		"description": "Group duplicate tabs"
-	},
-	"closeAllDuplicateTabs": {
-		"message": "Fermer tous",
-		"description": "Close all"
-	},
-	"whiteList": {
-		"message": "URLs de la Liste blanche",
-		"description": "URLs de la Liste blanche"
-	},
-	"customization": {
-		"message": "Personnalisation",
-		"description": "Customization"
+	"autoCloseTab": {
+		"description": "Close tab automatically",
+		"message": "Fermer l'onglet automatiquement"
 	},
 	"badgeColorDuplicateTabs": {
-		"message": "Couleur du bouton pour les onglets en doublon",
-		"description": "Badge color for duplicate tabs"
+		"description": "Badge color for duplicate tabs",
+		"message": "Couleur du bouton pour les onglets en doublon"
 	},
 	"badgeColorNoDuplicateTabs": {
-		"message": "Couleur du bouton pour aucun onglet en doublon",
-		"description": "Badge color for no duplicate tabs"
+		"description": "Badge color for no duplicate tabs",
+		"message": "Couleur du bouton pour aucun onglet en doublon"
 	},
-	"showBadgeIfNoDuplicateTabs": {
-		"message": "Afficher le badge si aucun onglet en doublon",
-		"description": "Affiche le badge si aucun onglet en doublon"
+	"caseInsensitive": {
+		"description": "Ignorer la casse de l'URL",
+		"message": "Ignorer la casse de l'URL"
 	},
-	"noDuplicateTabs": {
-		"message": "Aucun onglet en doublon",
-		"description": "No duplicate tabs"
+	"closeAllDuplicateTabs": {
+		"description": "Close all",
+		"message": "Fermer tous"
 	},
 	"closePopup": {
-		"message": "Fermer le panneau de popup après la fermeture des onglets en doublon",
-		"description": "Fermer le panneau de popup après la fermeture des onglets en doublon"
+		"description": "Fermer le panneau de popup après la fermeture des onglets en doublon",
+		"message": "Fermer le panneau de popup après la fermeture des onglets en doublon"
+	},
+	"compareWithTitle": {
+		"description": "Compare with title",
+		"message": "Comparer avec le titre"
+	},
+	"containerActivewindow": {
+		"description": "Container dans la fenêtres active",
+		"message": "Container dans la fenêtres active"
+	},
+	"containerAllwindows": {
+		"description": "Container dans toutes les fenêtres",
+		"message": "Container dans toutes les fenêtres"
+	},
+	"customization": {
+		"description": "Customization",
+		"message": "Personnalisation"
+	},
+	"defaultTabBehavior": {
+		"description": "Default tab behaviour",
+		"message": "Comportement par défaut de l'onglet"
+	},
+	"doNothing": {
+		"description": "Do nothing",
+		"message": "Ne rien faire"
+	},
+	"duplicatetabs": {
+		"description": "Duplicate tabs",
+		"message": "Onglets en doublon"
+	},
+	"groupDuplicateTabs": {
+		"description": "Group duplicate tabs",
+		"message": "Group duplicate tabs"
+	},
+	"hideWhiteListedDuplicateTabs": {
+		"description": "Hide whitelisted duplicate tabs",
+		"message": "Hide whitelisted duplicate tabs"
+	},
+	"ignore3w": {
+		"description": "Ignorer 'www' dans le nom de domaine de l'URL",
+		"message": "Ignorer 'www' dans le nom de domaine de l'URL"
+	},
+	"ignoreHashPart": {
+		"description": "Ignore hash part in URL",
+		"message": "Ignorer la partie « hachage » de l'URL"
+	},
+	"ignorePathPart": {
+		"description": "Ignore path part in URL",
+		"message": "Ignorer la partie « chemin » de l'URL"
+	},
+	"ignoreSearchPart": {
+		"description": "Ignore search part in URL",
+		"message": "Ignorer la partie « recherche » de l'URL"
+	},
+	"keepNewerTab": {
+		"description": "Keep newer tab",
+		"message": "Conserver le nouvel onglet"
+	},
+	"keepOlderTab": {
+		"description": "Keep older tab",
+		"message": "Conserver l'ancien onglet"
+	},
+	"keepPinnedTab": {
+		"description": "Keep pinned tab",
+		"message": "Conserver l'onglet épinglé"
+	},
+	"keepReloadOlderTab": {
+		"description": "Keep and reload older tab",
+		"message": "Conserver et actualiser l'ancien onglet"
+	},
+	"keepTabWithHistory": {
+		"description": "Keep tab with history",
+		"message": "Conserver l'onglet ayant un historique"
+	},
+	"keeptabwithHttps": {
+		"description": "Keep tab with https",
+		"message": "Conserver l'onglet avec https"
+	},
+	"matchingRules": {
+		"description": "Règle de correspondance",
+		"message": "Règle de correspondance"
 	},
 	"moreOptions": {
-		"message": "Plus d'options...",
-		"description": "Plus d'options..."
+		"description": "Plus d'options...",
+		"message": "Plus d'options..."
+	},
+	"noDuplicateTabs": {
+		"description": "No duplicate tabs",
+		"message": "Aucun onglet en doublon"
+	},
+	"onDuplicateTabDetected": {
+		"description": "On duplicate tab detected",
+		"message": "À la détection d'un doublon"
+	},
+	"onRemainingTab": {
+		"description": "On remaining tab",
+		"message": "Sur l'onglet restant"
+	},
+	"options": {
+		"description": "Options",
+		"message": "Options"
+	},
+	"scope": {
+		"description": "Scope",
+		"message": "Cadre"
+	},
+	"showBadgeIfNoDuplicateTabs": {
+		"description": "Affiche le badge si aucun onglet en doublon",
+		"message": "Afficher le badge si aucun onglet en doublon"
+	},
+	"showPanel": {
+		"description": "Show panel",
+		"message": "Afficher le panneau"
 	},
 	"shrunkMode": {
-		"message": "Shrunk mode:\nQuand il est activé, cache les options qui ne sont pas épinglées.",
-		"description": "Shrunk mode\nQuand il est activé, cache les options qui ne sont pas épinglées."
+		"description": "Shrunk mode\nQuand il est activé, cache les options qui ne sont pas épinglées.",
+		"message": "Shrunk mode:\nQuand il est activé, cache les options qui ne sont pas épinglées."
+	},
+	"tabPriority": {
+		"description": "Priority",
+		"message": "Priorité"
+	},
+	"whiteList": {
+		"description": "URLs de la Liste blanche",
+		"message": "URLs de la Liste blanche"
 	}
 }

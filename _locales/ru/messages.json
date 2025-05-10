@@ -1,162 +1,162 @@
 {
-	"options": {
-		"message": "Параметры",
-		"description": "Options"
-	},
-	"onDuplicateTabDetected": {
-		"message": "Если обнаружен дубликат вкладки",
-		"description": "On duplicate tab detected"
-	},
-	"doNothing": {
-		"message": "Ничего не делать",
-		"description": "Do nothing"
-	},
-	"autoCloseTab": {
-		"message": "Закрыть вкладку автоматически",
-		"description": "Close tab automatically"
-	},
-	"showPanel": {
-		"message": "Показать панель",
-		"description": "Show panel"
-	},
-	"tabPriority": {
-		"message": "Приоритет",
-		"description": "Priority"
-	},
-	"keepNewerTab": {
-		"message": "Сохранить новейшую вкладку",
-		"description": "Keep newer tab"
-	},
-	"keepOlderTab": {
-		"message": "Сохранить старейшую вкладку",
-		"description": "Keep older tab"
-	},
-	"keepReloadOlderTab": {
-		"message": "Сохранить и обновить старейшую вкладку",
-		"description": "Keep and reload older tab"
-	},
-	"keepTabWithHistory": {
-		"message": "Сохранить вкладку с историей",
-		"description": "Keep tab with history"
-	},
-	"keeptabwithHttps": {
-		"message": "Сохранить вкладку с https",
-		"description": "Keep tab with https"
-	},
-	"keepPinnedTab": {
-		"message": "Сохранить закрепленную вкладку",
-		"description": "Keep pinned tab"
-	},
-	"onRemainingTab": {
-		"message": "Оставшуюся вкладку...",
-		"description": "On remaining tab"
-	},
 	"activateKeptTab": {
-		"message": "Сделать активной",
-		"description": "Activate"
-	},
-	"defaultTabBehavior": {
-		"message": "Поведение вкладки по умолчанию",
-		"description": "Default tab behaviour"
-	},
-	"matchingRules": {
-		"message": "Matching rules",
-		"description": "Matching rules"
-	},
-	"ignoreHashPart": {
-		"message": "Игнорировать хэш-часть в URL вкладки",
-		"description": "Ignore hash part in URL"
-	},
-	"ignoreSearchPart": {
-		"message": "Игнорировать часть поиска в URL вкладки",
-		"description": "Ignore search part in URL"
-	},
-	"ignorePathPart": {
-		"message": "Игнорировать часть пути в URL вкладки",
-		"description": "Ignore path part in URL"
-	},
-	"ignore3w": {
-		"message": "Ignore 'www' in URL domain name",
-		"description": "Ignore 'www' in URL domain name"
-	},
-	"caseInsensitive": {
-		"message": "Ignore case in URL",
-		"description": "Ignore case in URL"
-	},
-	"compareWithTitle": {
-		"message": "Сравнить заголовки вкладок",
-		"description": "Compare with title"
-	},
-	"duplicatetabs": {
-		"message": "Дубликаты вкладок",
-		"description": "Duplicate tabs"
-	},
-	"scope": {
-		"message": "Границы поиска",
-		"description": "Scope"
+		"description": "Activate",
+		"message": "Сделать активной"
 	},
 	"activewindow": {
-		"message": "Активное окно",
-		"description": "Active window"
+		"description": "Active window",
+		"message": "Активное окно"
 	},
 	"allwindows": {
-		"message": "Все окна",
-		"description": "All windows"
+		"description": "All windows",
+		"message": "Все окна"
 	},
-	"containerActivewindow": {
-		"message": "Container in active window",
-		"description": "Container in active window"
-	},
-	"containerAllwindows": {
-		"message": "Container in all windows",
-		"description": "Container in all windows"
-	},
-	"hideWhiteListedDuplicateTabs": {
-		"message": "Hide whitelisted duplicate tabs",
-		"description": "Hide whitelisted duplicate tabs"
-	},
-	"groupDuplicateTabs": {
-		"message": "Group duplicate tabs",
-		"description": "Group duplicate tabs"
-	},
-	"closeAllDuplicateTabs": {
-		"message": "Закрыть все дубликаты вкладок",
-		"description": "Close all"
-	},
-	"whiteList": {
-		"message": "ホワイトリスト",
-		"description": "Whitelisted URLs"
-	},
-	"customization": {
-		"message": "Настройка",
-		"description": "Customization"
+	"autoCloseTab": {
+		"description": "Close tab automatically",
+		"message": "Закрыть вкладку автоматически"
 	},
 	"badgeColorDuplicateTabs": {
-		"message": "Цвет значка о наличии дубликатов",
-		"description": "Badge color for duplicate tabs"
+		"description": "Badge color for duplicate tabs",
+		"message": "Цвет значка о наличии дубликатов"
 	},
 	"badgeColorNoDuplicateTabs": {
-		"message": "Цвет значка об отсутствии дубликатов",
-		"description": "Badge color for no duplicate tab"
+		"description": "Badge color for no duplicate tab",
+		"message": "Цвет значка об отсутствии дубликатов"
 	},
-	"showBadgeIfNoDuplicateTabs": {
-		"message": "Показывать значок когда дубликатов нет",
-		"description": "Show badge if no duplicate tab"
+	"caseInsensitive": {
+		"description": "Ignore case in URL",
+		"message": "Ignore case in URL"
 	},
-	"noDuplicateTabs": {
-		"message": "Вкладок-дубликатов сейчас нет",
-		"description": "No duplicate tabs"
+	"closeAllDuplicateTabs": {
+		"description": "Close all",
+		"message": "Закрыть все дубликаты вкладок"
 	},
 	"closePopup": {
-		"message": "Close popup panel after closing duplicate tabs",
-		"description": "Close popup panel after closing duplicate tabs"
+		"description": "Close popup panel after closing duplicate tabs",
+		"message": "Close popup panel after closing duplicate tabs"
+	},
+	"compareWithTitle": {
+		"description": "Compare with title",
+		"message": "Сравнить заголовки вкладок"
+	},
+	"containerActivewindow": {
+		"description": "Container in active window",
+		"message": "Container in active window"
+	},
+	"containerAllwindows": {
+		"description": "Container in all windows",
+		"message": "Container in all windows"
+	},
+	"customization": {
+		"description": "Customization",
+		"message": "Настройка"
+	},
+	"defaultTabBehavior": {
+		"description": "Default tab behaviour",
+		"message": "Поведение вкладки по умолчанию"
+	},
+	"doNothing": {
+		"description": "Do nothing",
+		"message": "Ничего не делать"
+	},
+	"duplicatetabs": {
+		"description": "Duplicate tabs",
+		"message": "Дубликаты вкладок"
+	},
+	"groupDuplicateTabs": {
+		"description": "Group duplicate tabs",
+		"message": "Group duplicate tabs"
+	},
+	"hideWhiteListedDuplicateTabs": {
+		"description": "Hide whitelisted duplicate tabs",
+		"message": "Hide whitelisted duplicate tabs"
+	},
+	"ignore3w": {
+		"description": "Ignore 'www' in URL domain name",
+		"message": "Ignore 'www' in URL domain name"
+	},
+	"ignoreHashPart": {
+		"description": "Ignore hash part in URL",
+		"message": "Игнорировать хэш-часть в URL вкладки"
+	},
+	"ignorePathPart": {
+		"description": "Ignore path part in URL",
+		"message": "Игнорировать часть пути в URL вкладки"
+	},
+	"ignoreSearchPart": {
+		"description": "Ignore search part in URL",
+		"message": "Игнорировать часть поиска в URL вкладки"
+	},
+	"keepNewerTab": {
+		"description": "Keep newer tab",
+		"message": "Сохранить новейшую вкладку"
+	},
+	"keepOlderTab": {
+		"description": "Keep older tab",
+		"message": "Сохранить старейшую вкладку"
+	},
+	"keepPinnedTab": {
+		"description": "Keep pinned tab",
+		"message": "Сохранить закрепленную вкладку"
+	},
+	"keepReloadOlderTab": {
+		"description": "Keep and reload older tab",
+		"message": "Сохранить и обновить старейшую вкладку"
+	},
+	"keepTabWithHistory": {
+		"description": "Keep tab with history",
+		"message": "Сохранить вкладку с историей"
+	},
+	"keeptabwithHttps": {
+		"description": "Keep tab with https",
+		"message": "Сохранить вкладку с https"
+	},
+	"matchingRules": {
+		"description": "Matching rules",
+		"message": "Matching rules"
 	},
 	"moreOptions": {
-		"message": "More options...",
-		"description": "More options..."
+		"description": "More options...",
+		"message": "More options..."
+	},
+	"noDuplicateTabs": {
+		"description": "No duplicate tabs",
+		"message": "Вкладок-дубликатов сейчас нет"
+	},
+	"onDuplicateTabDetected": {
+		"description": "On duplicate tab detected",
+		"message": "Если обнаружен дубликат вкладки"
+	},
+	"onRemainingTab": {
+		"description": "On remaining tab",
+		"message": "Оставшуюся вкладку..."
+	},
+	"options": {
+		"description": "Options",
+		"message": "Параметры"
+	},
+	"scope": {
+		"description": "Scope",
+		"message": "Границы поиска"
+	},
+	"showBadgeIfNoDuplicateTabs": {
+		"description": "Show badge if no duplicate tab",
+		"message": "Показывать значок когда дубликатов нет"
+	},
+	"showPanel": {
+		"description": "Show panel",
+		"message": "Показать панель"
 	},
 	"shrunkMode": {
-		"message": "Shrunk mode:\nWhen activated, hide unpinned options.",
-		"description": "Shrunk mode\nWhen activated, hide unpinned options."
+		"description": "Shrunk mode\nWhen activated, hide unpinned options.",
+		"message": "Shrunk mode:\nWhen activated, hide unpinned options."
+	},
+	"tabPriority": {
+		"description": "Priority",
+		"message": "Приоритет"
+	},
+	"whiteList": {
+		"description": "Whitelisted URLs",
+		"message": "ホワイトリスト"
 	}
 }

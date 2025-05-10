@@ -1,162 +1,162 @@
 {
-	"options": {
-		"message": "オプション",
-		"description": "Options"
-	},
-	"onDuplicateTabDetected": {
-		"message": "タブの重複を検知したとき",
-		"description": "On duplicate tab detected"
-	},
-	"doNothing": {
-		"message": "何もしない",
-		"description": "Do nothing"
-	},
-	"autoCloseTab": {
-		"message": "自動的にタブを閉じる",
-		"description": "Close tab automatically"
-	},
-	"showPanel": {
-		"message": "パネルを表示する",
-		"description": "Show panel"
-	},
-	"tabPriority": {
-		"message": "優先順位",
-		"description": "Priority"
-	},
-	"keepNewerTab": {
-		"message": "新しい方のタブを残す",
-		"description": "Keep newer tab"
-	},
-	"keepOlderTab": {
-		"message": "古い方のタブを残す",
-		"description": "Keep older tab"
-	},
-	"keepReloadOlderTab": {
-		"message": "古い方のタブを残して再読み込みする",
-		"description": "Keep and reload older tab"
-	},
-	"keepTabWithHistory": {
-		"message": "タブの履歴を維持する",
-		"description": "Keep tab with history"
-	},
-	"keeptabwithHttps": {
-		"message": "HTTPSのタブを残す",
-		"description": "Keep tab with https"
-	},
-	"keepPinnedTab": {
-		"message": "ピン留めされたタブを残す",
-		"description": "Keep pinned tab"
-	},
-	"onRemainingTab": {
-		"message": "残されたタブがある場合",
-		"description": "On remaining tab"
-	},
 	"activateKeptTab": {
-		"message": "アクティブにする",
-		"description": "Activate"
-	},
-	"defaultTabBehavior": {
-		"message": "タブの既定の挙動に任せる",
-		"description": "Default tab behaviour"
-	},
-	"matchingRules": {
-		"message": "Matching rules",
-		"description": "Matching rules"
-	},
-	"ignoreHashPart": {
-		"message": "URLのハッシュ部分（#～）を無視する",
-		"description": "Ignore hash part in URL"
-	},
-	"ignoreSearchPart": {
-		"message": "URLのクエリー部分（?～）を無視する",
-		"description": "Ignore search part in URL"
-	},
-	"ignorePathPart": {
-		"message": "URLのパス部分を無視する",
-		"description": "Ignore path part in URL"
-	},
-	"ignore3w": {
-		"message": "Ignore 'www' in URL domain name",
-		"description": "Ignore 'www' in URL domain name"
-	},
-	"caseInsensitive": {
-		"message": "Ignore case in URL",
-		"description": "Ignore case in URL"
-	},
-	"compareWithTitle": {
-		"message": "タブのタイトルを比較する",
-		"description": "Compare with title"
-	},
-	"duplicatetabs": {
-		"message": "重複したタブ",
-		"description": "Duplicate tabs"
-	},
-	"scope": {
-		"message": "重複を検出する範囲",
-		"description": "Scope"
+		"description": "Activate",
+		"message": "アクティブにする"
 	},
 	"activewindow": {
-		"message": "アクティブなウィンドウ",
-		"description": "Active window"
+		"description": "Active window",
+		"message": "アクティブなウィンドウ"
 	},
 	"allwindows": {
-		"message": "すべてのウィンドウ",
-		"description": "All windows"
+		"description": "All windows",
+		"message": "すべてのウィンドウ"
 	},
-	"containerActivewindow": {
-		"message": "Container in active window",
-		"description": "Container in active window"
-	},
-	"containerAllwindows": {
-		"message": "Container in all windows",
-		"description": "Container in all windows"
-	},
-	"hideWhiteListedDuplicateTabs": {
-		"message": "Hide whitelisted duplicate tabs",
-		"description": "Hide whitelisted duplicate tabs"
-	},
-	"groupDuplicateTabs": {
-		"message": "Group duplicate tabs",
-		"description": "Group duplicate tabs"
-	},
-	"closeAllDuplicateTabs": {
-		"message": "重複したタブをすべて閉じる",
-		"description": "Close all"
-	},
-	"whiteList": {
-		"message": "ホワイトリスト",
-		"description": "Whitelisted URLs"
-	},
-	"customization": {
-		"message": "カスタマイズ",
-		"description": "Customization"
+	"autoCloseTab": {
+		"description": "Close tab automatically",
+		"message": "自動的にタブを閉じる"
 	},
 	"badgeColorDuplicateTabs": {
-		"message": "タブが重複しているときのバッジの色",
-		"description": "Badge color for duplicate tabs"
+		"description": "Badge color for duplicate tabs",
+		"message": "タブが重複しているときのバッジの色"
 	},
 	"badgeColorNoDuplicateTabs": {
-		"message": "タブが重複していないときのバッジの色",
-		"description": "Badge color for no duplicate tab"
+		"description": "Badge color for no duplicate tab",
+		"message": "タブが重複していないときのバッジの色"
 	},
-	"showBadgeIfNoDuplicateTabs": {
-		"message": "タブが重複していないときもバッジを表示する",
-		"description": "Show badge if no duplicate tab"
+	"caseInsensitive": {
+		"description": "Ignore case in URL",
+		"message": "Ignore case in URL"
 	},
-	"noDuplicateTabs": {
-		"message": "タブの重複はありません",
-		"description": "No duplicate tabs"
+	"closeAllDuplicateTabs": {
+		"description": "Close all",
+		"message": "重複したタブをすべて閉じる"
 	},
 	"closePopup": {
-		"message": "Close popup panel after closing duplicate tabs",
-		"description": "Close popup panel after closing duplicate tabs"
+		"description": "Close popup panel after closing duplicate tabs",
+		"message": "Close popup panel after closing duplicate tabs"
+	},
+	"compareWithTitle": {
+		"description": "Compare with title",
+		"message": "タブのタイトルを比較する"
+	},
+	"containerActivewindow": {
+		"description": "Container in active window",
+		"message": "Container in active window"
+	},
+	"containerAllwindows": {
+		"description": "Container in all windows",
+		"message": "Container in all windows"
+	},
+	"customization": {
+		"description": "Customization",
+		"message": "カスタマイズ"
+	},
+	"defaultTabBehavior": {
+		"description": "Default tab behaviour",
+		"message": "タブの既定の挙動に任せる"
+	},
+	"doNothing": {
+		"description": "Do nothing",
+		"message": "何もしない"
+	},
+	"duplicatetabs": {
+		"description": "Duplicate tabs",
+		"message": "重複したタブ"
+	},
+	"groupDuplicateTabs": {
+		"description": "Group duplicate tabs",
+		"message": "Group duplicate tabs"
+	},
+	"hideWhiteListedDuplicateTabs": {
+		"description": "Hide whitelisted duplicate tabs",
+		"message": "Hide whitelisted duplicate tabs"
+	},
+	"ignore3w": {
+		"description": "Ignore 'www' in URL domain name",
+		"message": "Ignore 'www' in URL domain name"
+	},
+	"ignoreHashPart": {
+		"description": "Ignore hash part in URL",
+		"message": "URLのハッシュ部分（#～）を無視する"
+	},
+	"ignorePathPart": {
+		"description": "Ignore path part in URL",
+		"message": "URLのパス部分を無視する"
+	},
+	"ignoreSearchPart": {
+		"description": "Ignore search part in URL",
+		"message": "URLのクエリー部分（?～）を無視する"
+	},
+	"keepNewerTab": {
+		"description": "Keep newer tab",
+		"message": "新しい方のタブを残す"
+	},
+	"keepOlderTab": {
+		"description": "Keep older tab",
+		"message": "古い方のタブを残す"
+	},
+	"keepPinnedTab": {
+		"description": "Keep pinned tab",
+		"message": "ピン留めされたタブを残す"
+	},
+	"keepReloadOlderTab": {
+		"description": "Keep and reload older tab",
+		"message": "古い方のタブを残して再読み込みする"
+	},
+	"keepTabWithHistory": {
+		"description": "Keep tab with history",
+		"message": "タブの履歴を維持する"
+	},
+	"keeptabwithHttps": {
+		"description": "Keep tab with https",
+		"message": "HTTPSのタブを残す"
+	},
+	"matchingRules": {
+		"description": "Matching rules",
+		"message": "Matching rules"
 	},
 	"moreOptions": {
-		"message": "More options...",
-		"description": "More options..."
+		"description": "More options...",
+		"message": "More options..."
+	},
+	"noDuplicateTabs": {
+		"description": "No duplicate tabs",
+		"message": "タブの重複はありません"
+	},
+	"onDuplicateTabDetected": {
+		"description": "On duplicate tab detected",
+		"message": "タブの重複を検知したとき"
+	},
+	"onRemainingTab": {
+		"description": "On remaining tab",
+		"message": "残されたタブがある場合"
+	},
+	"options": {
+		"description": "Options",
+		"message": "オプション"
+	},
+	"scope": {
+		"description": "Scope",
+		"message": "重複を検出する範囲"
+	},
+	"showBadgeIfNoDuplicateTabs": {
+		"description": "Show badge if no duplicate tab",
+		"message": "タブが重複していないときもバッジを表示する"
+	},
+	"showPanel": {
+		"description": "Show panel",
+		"message": "パネルを表示する"
 	},
 	"shrunkMode": {
-		"message": "Shrunk mode:\nWhen activated, hide unpinned options.",
-		"description": "Shrunk mode\nWhen activated, hide unpinned options."
+		"description": "Shrunk mode\nWhen activated, hide unpinned options.",
+		"message": "Shrunk mode:\nWhen activated, hide unpinned options."
+	},
+	"tabPriority": {
+		"description": "Priority",
+		"message": "優先順位"
+	},
+	"whiteList": {
+		"description": "Whitelisted URLs",
+		"message": "ホワイトリスト"
 	}
 }
