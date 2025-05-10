@@ -1,235 +1,355 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Duplicate Tabs Closer Panel</title>
+    <link
+      href="../ext_lib/bootstrap-4.5.0-dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="../ext_lib/font-awesome-4.7.0/css/font-awesome.min.css"
+      rel="stylesheet"
+    />
+    <link href="optionPage.css" rel="stylesheet" />
+    <script src="../ext_lib/jquery/jquery-3.5.1.slim.min.js"></script>
+    <script src="../ext_lib/bootstrap-4.5.0-dist/js/bootstrap.min.js"></script>
+    <script src="../helper.js"></script>
+    <script src="optionPage.js"></script>
+  </head>
 
-<head>
-  <meta charset="utf-8">
-  <title>Duplicate Tabs Closer Panel</title>
-  <link href="../ext_lib/bootstrap-4.5.0-dist/css/bootstrap.min.css"
-        rel="stylesheet">
-  <link href="../ext_lib/font-awesome-4.7.0/css/font-awesome.min.css"
-        rel="stylesheet">
-  <link href="optionPage.css" rel="stylesheet">
-  <script src="../ext_lib/jquery/jquery-3.5.1.slim.min.js"></script>
-  <script src="../ext_lib/bootstrap-4.5.0-dist/js/bootstrap.min.js"></script>
-  <script src="../helper.js"></script>
-  <script src="optionPage.js"></script>
-</head>
-
-<body>
-<div class="panel-group">
-
-  <div class="card" id="optionsCard">
-    <div class="card-header d-flex justify-content-between align-items-center">
-      <span i18n-content="options"></span>
-    </div>
-    <div class="card-body shadow-sm">
-      <ul class="list-group list-group-flush">
-        <li
-          class="list-group-item list-group-item-header d-flex justify-content-between align-items-center">
-          <span class="list-group-item-title list-group-expanded"
+  <body>
+    <div class="panel-group">
+      <div class="card" id="optionsCard">
+        <div
+          class="card-header d-flex justify-content-between align-items-center"
+        >
+          <span i18n-content="options"></span>
+        </div>
+        <div class="card-body shadow-sm">
+          <ul class="list-group list-group-flush">
+            <li
+              class="list-group-item list-group-item-header d-flex justify-content-between align-items-center"
+            >
+              <span
+                class="list-group-item-title list-group-expanded"
                 i18n-content="onDuplicateTabDetected"
-                id="onDuplicateTabDetectedTitle"></span>
-          <input class="checkbox-fa" id="onDuplicateTabDetectedPinned"
-                 type="checkbox" />
-          <label class="checkbox-fa-label" for="onDuplicateTabDetectedPinned">
-            <span class="fa fa-thumb-tack"></span>
-          </label>
-        </li>
-        <li class="list-group-item">
-          <div class="form-group" id="onDuplicateTabDetectedBody">
-            <select class="form-control form-control-xs"
-                    id="onDuplicateTabDetected" name="onDuplicateTabDetected">
-              <option i18n-content="doNothing" value="N"></option>
-              <option i18n-content="autoCloseTab" value="A"></option>
-            </select>
-            <div id="onRemainingTabGroup">
-              <label class="titleLabel" for="onRemainingTab"
-                     i18n-content="onRemainingTab"></label>
-              <select class="form-control form-control-xs" id="onRemainingTab"
-                      name="onRemainingTab">
-                <option i18n-content="doNothing" value="N"></option>
-                <option i18n-content="activateKeptTab" value="A"></option>
-                <option i18n-content="defaultTabBehavior" value="B"></option>
-              </select>
-            </div>
-            <div id="whiteListGroup">
-              <label class="titleLabel" for="whiteList"
-                     i18n-content="whiteList"></label>
-              <textarea class="form-control rounded-0" cols="100" id="whiteList"
-                        rows="4"></textarea>
-            </div>
-          </div>
-        </li>
-        <li
-          class="list-group-item list-group-item-header d-flex justify-content-between align-items-center">
-          <span class="list-group-item-title list-group-expanded"
-                i18n-content="tabPriority" id="tabPriorityTitle"></span>
-          <input class="checkbox-fa" id="tabPriorityPinned" type="checkbox" />
-          <label class="checkbox-fa-label" for="tabPriorityPinned">
-            <span class="fa fa-thumb-tack"></span>
-          </label>
-        </li>
-        <li class="list-group-item">
-          <div class="form-group" id="tabPriorityBody">
-            <select class="form-control form-control-xs" id="keepTabBasedOnAge"
-                    name="keepTabBasedOnAge">
-              <option i18n-content="keepNewerTab" value="N"></option>
-              <option i18n-content="keepOlderTab" value="O"></option>
-              <option i18n-content="keepReloadOlderTab" value="R"></option>
-            </select>
-            <div class="vertical-line"></div>
-            <div class="checkboxes">
-              <label for="keepTabWithHttps">
-                <input id="keepTabWithHttps" type="checkbox" />
-                <span i18n-content="keepTabWithHttps"></span>
+                id="onDuplicateTabDetectedTitle"
+              ></span>
+              <input
+                class="checkbox-fa"
+                id="onDuplicateTabDetectedPinned"
+                type="checkbox"
+              />
+              <label
+                class="checkbox-fa-label"
+                for="onDuplicateTabDetectedPinned"
+              >
+                <span class="fa fa-thumb-tack"></span>
               </label>
-            </div>
-            <div class="checkboxes">
-              <label for="keepPinnedTab">
-                <input id="keepPinnedTab" type="checkbox" />
-                <span i18n-content="keepPinnedTab"></span>
+            </li>
+            <li class="list-group-item">
+              <div class="form-group" id="onDuplicateTabDetectedBody">
+                <select
+                  class="form-control form-control-xs"
+                  id="onDuplicateTabDetected"
+                  name="onDuplicateTabDetected"
+                >
+                  <option i18n-content="doNothing" value="N"></option>
+                  <option i18n-content="autoCloseTab" value="A"></option>
+                </select>
+                <div id="onRemainingTabGroup">
+                  <label
+                    class="titleLabel"
+                    for="onRemainingTab"
+                    i18n-content="onRemainingTab"
+                  ></label>
+                  <select
+                    class="form-control form-control-xs"
+                    id="onRemainingTab"
+                    name="onRemainingTab"
+                  >
+                    <option i18n-content="doNothing" value="N"></option>
+                    <option i18n-content="activateKeptTab" value="A"></option>
+                    <option
+                      i18n-content="defaultTabBehavior"
+                      value="B"
+                    ></option>
+                  </select>
+                </div>
+                <div id="whiteListGroup">
+                  <label
+                    class="titleLabel"
+                    for="whiteList"
+                    i18n-content="whiteList"
+                  ></label>
+                  <textarea
+                    class="form-control rounded-0"
+                    cols="100"
+                    id="whiteList"
+                    rows="4"
+                  ></textarea>
+                </div>
+              </div>
+            </li>
+            <li
+              class="list-group-item list-group-item-header d-flex justify-content-between align-items-center"
+            >
+              <span
+                class="list-group-item-title list-group-expanded"
+                i18n-content="tabPriority"
+                id="tabPriorityTitle"
+              ></span>
+              <input
+                class="checkbox-fa"
+                id="tabPriorityPinned"
+                type="checkbox"
+              />
+              <label class="checkbox-fa-label" for="tabPriorityPinned">
+                <span class="fa fa-thumb-tack"></span>
               </label>
-            </div>
-          </div>
-        </li>
-        <li
-          class="list-group-item list-group-item-header d-flex justify-content-between align-items-center">
-          <span class="list-group-item-title list-group-expanded"
-                i18n-content="matchingRules" id="matchingRulesTitle"></span>
-          <input class="checkbox-fa" id="matchingRulesPinned" type="checkbox" />
-          <label class="checkbox-fa-label" for="matchingRulesPinned">
-            <span class="fa fa-thumb-tack"></span>
-          </label>
-        </li>
-        <li class="list-group-item">
-          <div class="form-group" id="matchingRulesBody">
-            <div class="checkboxes">
-              <label for="caseInsensitive">
-                <input class="checkbox-filter" id="caseInsensitive"
-                       type="checkbox" />
-                <span i18n-content="caseInsensitive"></span>
+            </li>
+            <li class="list-group-item">
+              <div class="form-group" id="tabPriorityBody">
+                <select
+                  class="form-control form-control-xs"
+                  id="keepTabBasedOnAge"
+                  name="keepTabBasedOnAge"
+                >
+                  <option i18n-content="keepNewerTab" value="N"></option>
+                  <option i18n-content="keepOlderTab" value="O"></option>
+                  <option i18n-content="keepReloadOlderTab" value="R"></option>
+                </select>
+                <div class="vertical-line"></div>
+                <div class="checkboxes">
+                  <label for="keepTabWithHttps">
+                    <input id="keepTabWithHttps" type="checkbox" />
+                    <span i18n-content="keepTabWithHttps"></span>
+                  </label>
+                </div>
+                <div class="checkboxes">
+                  <label for="keepPinnedTab">
+                    <input id="keepPinnedTab" type="checkbox" />
+                    <span i18n-content="keepPinnedTab"></span>
+                  </label>
+                </div>
+              </div>
+            </li>
+            <li
+              class="list-group-item list-group-item-header d-flex justify-content-between align-items-center"
+            >
+              <span
+                class="list-group-item-title list-group-expanded"
+                i18n-content="matchingRules"
+                id="matchingRulesTitle"
+              ></span>
+              <input
+                class="checkbox-fa"
+                id="matchingRulesPinned"
+                type="checkbox"
+              />
+              <label class="checkbox-fa-label" for="matchingRulesPinned">
+                <span class="fa fa-thumb-tack"></span>
               </label>
-            </div>
-            <div class="checkboxes">
-              <label for="ignore3w">
-                <input class="checkbox-filter" id="ignore3w" type="checkbox" />
-                <span i18n-content="ignore3w"></span>
+            </li>
+            <li class="list-group-item">
+              <div class="form-group" id="matchingRulesBody">
+                <div class="checkboxes">
+                  <label for="caseInsensitive">
+                    <input
+                      class="checkbox-filter"
+                      id="caseInsensitive"
+                      type="checkbox"
+                    />
+                    <span i18n-content="caseInsensitive"></span>
+                  </label>
+                </div>
+                <div class="checkboxes">
+                  <label for="ignore3w">
+                    <input
+                      class="checkbox-filter"
+                      id="ignore3w"
+                      type="checkbox"
+                    />
+                    <span i18n-content="ignore3w"></span>
+                  </label>
+                </div>
+                <div class="checkboxes">
+                  <label for="ignoreHashPart">
+                    <input
+                      class="checkbox-filter"
+                      id="ignoreHashPart"
+                      type="checkbox"
+                    />
+                    <span i18n-content="ignoreHashPart"></span>
+                  </label>
+                </div>
+                <div class="checkboxes">
+                  <label for="ignoreSearchPart">
+                    <input
+                      class="checkbox-filter"
+                      id="ignoreSearchPart"
+                      type="checkbox"
+                    />
+                    <span i18n-content="ignoreSearchPart"></span>
+                  </label>
+                </div>
+                <div class="checkboxes">
+                  <label for="ignorePathPart">
+                    <input
+                      class="checkbox-filter"
+                      id="ignorePathPart"
+                      type="checkbox"
+                    />
+                    <span i18n-content="ignorePathPart"></span>
+                  </label>
+                </div>
+                <div class="checkboxes">
+                  <label for="compareWithTitle">
+                    <input
+                      class="checkbox-filter"
+                      id="compareWithTitle"
+                      type="checkbox"
+                    />
+                    <span i18n-content="compareWithTitle"></span>
+                  </label>
+                </div>
+              </div>
+            </li>
+            <li
+              class="list-group-item list-group-item-header d-flex justify-content-between align-items-center"
+            >
+              <span
+                class="list-group-item-title list-group-expanded"
+                i18n-content="scope"
+                id="scopeTitle"
+              ></span>
+              <input class="checkbox-fa" id="scopePinned" type="checkbox" />
+              <label class="checkbox-fa-label" for="scopePinned">
+                <span class="fa fa-thumb-tack"></span>
               </label>
-            </div>
-            <div class="checkboxes">
-              <label for="ignoreHashPart">
-                <input class="checkbox-filter" id="ignoreHashPart"
-                       type="checkbox" />
-                <span i18n-content="ignoreHashPart"></span>
+            </li>
+            <li class="list-group-item">
+              <div class="form-group" id="scopeBody">
+                <select
+                  class="form-control form-control-xs"
+                  id="scope"
+                  name="scope"
+                >
+                  <option
+                    class="containerItem"
+                    i18n-content="containerActivewindow"
+                    value="CC"
+                  ></option>
+                  <option
+                    class="containerItem"
+                    i18n-content="containerAllwindows"
+                    value="CA"
+                  ></option>
+                  <option i18n-content="activeWindow" value="C"></option>
+                  <option i18n-content="allWindows" value="A"></option>
+                </select>
+              </div>
+            </li>
+            <li
+              class="list-group-item list-group-item-header d-flex justify-content-between align-items-center"
+            >
+              <span
+                class="list-group-item-title list-group-expanded"
+                i18n-content="customization"
+                id="customization"
+              ></span>
+              <input
+                class="checkbox-fa"
+                id="customizationPinned"
+                type="checkbox"
+              />
+              <label class="checkbox-fa-label" for="customizationPinned">
+                <span class="fa fa-thumb-tack"></span>
               </label>
-            </div>
-            <div class="checkboxes">
-              <label for="ignoreSearchPart">
-                <input class="checkbox-filter" id="ignoreSearchPart"
-                       type="checkbox" />
-                <span i18n-content="ignoreSearchPart"></span>
-              </label>
-            </div>
-            <div class="checkboxes">
-              <label for="ignorePathPart">
-                <input class="checkbox-filter" id="ignorePathPart"
-                       type="checkbox" />
-                <span i18n-content="ignorePathPart"></span>
-              </label>
-            </div>
-            <div class="checkboxes">
-              <label for="compareWithTitle">
-                <input class="checkbox-filter" id="compareWithTitle"
-                       type="checkbox" />
-                <span i18n-content="compareWithTitle"></span>
-              </label>
-            </div>
-          </div>
-        </li>
-        <li
-          class="list-group-item list-group-item-header d-flex justify-content-between align-items-center">
-          <span class="list-group-item-title list-group-expanded"
-                i18n-content="scope" id="scopeTitle"></span>
-          <input class="checkbox-fa" id="scopePinned" type="checkbox" />
-          <label class="checkbox-fa-label" for="scopePinned">
-            <span class="fa fa-thumb-tack"></span>
-          </label>
-        </li>
-        <li class="list-group-item">
-          <div class="form-group" id="scopeBody">
-            <select class="form-control form-control-xs" id="scope"
-                    name="scope">
-              <option class="containerItem" i18n-content="containerActivewindow"
-                      value="CC"></option>
-              <option class="containerItem" i18n-content="containerAllwindows"
-                      value="CA"></option>
-              <option i18n-content="activeWindow" value="C"></option>
-              <option i18n-content="allWindows" value="A"></option>
-            </select>
-          </div>
-        </li>
-        <li
-          class="list-group-item list-group-item-header d-flex justify-content-between align-items-center">
-          <span class="list-group-item-title list-group-expanded"
-                i18n-content="customization" id="customization"></span>
-          <input class="checkbox-fa" id="customizationPinned" type="checkbox" />
-          <label class="checkbox-fa-label" for="customizationPinned">
-            <span class="fa fa-thumb-tack"></span>
-          </label>
-        </li>
-        <li class="list-group-item">
-          <div class="form-group" id="customizationBody">
-            <table id="color-container">
-              <tr>
-                <td><input class="form-control badgeColor" id="badgeColorDuplicateTabs"
-                           type="color" value="#563d7c"></td>
-                <td><label class="label-badgeColor"
-                           for="badgeColorDuplicateTabs"
-                           i18n-content="badgeColorDuplicateTabs"></label></td>
-              </tr>
-              <tr>
-                <td><input class="form-control badgeColor" id="badgeColorNoDuplicateTabs"
-                           type="color" value="#563d7c"></td>
-                <td><label class="label-badgeColor"
-                           for="badgeColorNoDuplicateTabs"
-                           i18n-content="badgeColorNoDuplicateTabs"></label></td>
-              </tr>
-            </table>
-            <div class="mx-auto" id="color-picker-1"></div>
-            <div class="checkboxes">
-              <label for="showBadgeIfNoDuplicateTabs">
-                <input class="checkbox-filter" id="showBadgeIfNoDuplicateTabs"
-                       type="checkbox" />
-                <span i18n-content="showBadgeIfNoDuplicateTabs"></span>
-              </label>
-            </div>
-            <div class="checkboxes">
-              <label for="closePopup">
-                <input class="checkbox-filter" id="closePopup"
-                       type="checkbox" />
-                <span i18n-content="closePopup"></span>
-              </label>
-            </div>
-          </div>
-        </li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="card" id="duplicateTabsCard">
-    <div class="card-header d-flex justify-content-between align-items-center">
-      <span i18n-content="duplicateTabs"></span>
-    </div>
-    <div class="card-body shadow-sm">
-      <div class="table-scrollable" id="duplicateTabsTableContainer">
-        <table class="table table-hover table-borderless"
-               id="duplicateTabsTable">
-          <tbody id="duplicateTabsTableBody">
-          </tbody>
-        </table>
+            </li>
+            <li class="list-group-item">
+              <div class="form-group" id="customizationBody">
+                <table id="color-container">
+                  <tr>
+                    <td>
+                      <input
+                        class="form-control badgeColor"
+                        id="badgeColorDuplicateTabs"
+                        type="color"
+                        value="#563d7c"
+                      />
+                    </td>
+                    <td>
+                      <label
+                        class="label-badgeColor"
+                        for="badgeColorDuplicateTabs"
+                        i18n-content="badgeColorDuplicateTabs"
+                      ></label>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <input
+                        class="form-control badgeColor"
+                        id="badgeColorNoDuplicateTabs"
+                        type="color"
+                        value="#563d7c"
+                      />
+                    </td>
+                    <td>
+                      <label
+                        class="label-badgeColor"
+                        for="badgeColorNoDuplicateTabs"
+                        i18n-content="badgeColorNoDuplicateTabs"
+                      ></label>
+                    </td>
+                  </tr>
+                </table>
+                <div class="mx-auto" id="color-picker-1"></div>
+                <div class="checkboxes">
+                  <label for="showBadgeIfNoDuplicateTabs">
+                    <input
+                      class="checkbox-filter"
+                      id="showBadgeIfNoDuplicateTabs"
+                      type="checkbox"
+                    />
+                    <span i18n-content="showBadgeIfNoDuplicateTabs"></span>
+                  </label>
+                </div>
+                <div class="checkboxes">
+                  <label for="closePopup">
+                    <input
+                      class="checkbox-filter"
+                      id="closePopup"
+                      type="checkbox"
+                    />
+                    <span i18n-content="closePopup"></span>
+                  </label>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
       </div>
-      <div class="table-footer d-flex">
-        <!-- <input type="checkbox" class="checkbox-fa" id="duplicateFilterChecked" />
+
+      <div class="card" id="duplicateTabsCard">
+        <div
+          class="card-header d-flex justify-content-between align-items-center"
+        >
+          <span i18n-content="duplicateTabs"></span>
+        </div>
+        <div class="card-body shadow-sm">
+          <div class="table-scrollable" id="duplicateTabsTableContainer">
+            <table
+              class="table table-hover table-borderless"
+              id="duplicateTabsTable"
+            >
+              <tbody id="duplicateTabsTableBody"></tbody>
+            </table>
+          </div>
+          <div class="table-footer d-flex">
+            <!-- <input type="checkbox" class="checkbox-fa" id="duplicateFilterChecked" />
         <label for="duplicateFilterChecked" class="checkbox-fa-label hidden">
           <span class="fa fa-lg fa-filter"></span>
         </label>
@@ -237,15 +357,15 @@
         <label for="duplicateGroupChecked" class="checkbox-fa-label hidden">
           <span class="fa fa-lg fa-plus-square-o"></span>
         </label> -->
-        <button class="btn btn-block btn-xs btn-close-tabs disabled"
-                i18n-content="closeAllDuplicateTabs"
-                id="closeDuplicateTabsBtn"
-                type="button"></button>
+            <button
+              class="btn btn-block btn-xs btn-close-tabs disabled"
+              i18n-content="closeAllDuplicateTabs"
+              id="closeDuplicateTabsBtn"
+              type="button"
+            ></button>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-
-</div>
-</body>
-
+  </body>
 </html>
