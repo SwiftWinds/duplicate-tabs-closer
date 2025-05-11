@@ -1,162 +1,162 @@
 {
-  "activateKeptTab": {
-    "description": "Activate",
-    "message": "Зробити активною"
-  },
-  "activewindow": {
-    "description": "Active window",
-    "message": "Активне вікно"
-  },
-  "allwindows": {
-    "description": "All windows",
-    "message": "Всі вікна"
-  },
-  "autoCloseTab": {
-    "description": "Close tab automatically",
-    "message": "Закрити вкладку автоматично"
-  },
-  "badgeColorDuplicateTabs": {
-    "description": "Badge color for duplicate tabs",
-    "message": "Колір значка наявності дублікатів"
-  },
-  "badgeColorNoDuplicateTabs": {
-    "description": "Badge color for no duplicate tab",
-    "message": "Колір значка відсутності дублікатів"
-  },
-  "caseInsensitive": {
-    "description": "Ignore case in URL",
-    "message": "Ignore case in URL"
-  },
-  "closeAllDuplicateTabs": {
-    "description": "Close all",
-    "message": "Закрити всі дублікати вкладок"
-  },
-  "closePopup": {
-    "description": "Close popup panel after closing duplicate tabs",
-    "message": "Close popup panel after closing duplicate tabs"
-  },
-  "compareWithTitle": {
-    "description": "Compare with title",
-    "message": "Порівняти заголовки вкладок"
-  },
-  "containerActivewindow": {
-    "description": "Container in active window",
-    "message": "Container in active window"
-  },
-  "containerAllwindows": {
-    "description": "Container in all windows",
-    "message": "Container in all windows"
-  },
-  "customization": {
-    "description": "Customization",
-    "message": "Налаштування"
-  },
-  "defaultTabBehavior": {
-    "description": "Default tab behaviour",
-    "message": "Поведінка вкладки за замовчуванням"
-  },
-  "doNothing": {
-    "description": "Do nothing",
-    "message": "Нічого не робити"
-  },
-  "duplicatetabs": {
-    "description": "Duplicate tabs",
-    "message": "Дублікати вкладок"
-  },
-  "groupDuplicateTabs": {
-    "description": "Group duplicate tabs",
-    "message": "Group duplicate tabs"
-  },
-  "hideWhiteListedDuplicateTabs": {
-    "description": "Hide whitelisted duplicate tabs",
-    "message": "Hide whitelisted duplicate tabs"
-  },
-  "ignore3w": {
-    "description": "Ignore 'www' in URL domain name",
-    "message": "Ignore 'www' in URL domain name"
-  },
-  "ignoreHashPart": {
-    "description": "Ignore hash part in URL",
-    "message": "Ігнорувати хеш-частину в URL вкладки"
-  },
-  "ignorePathPart": {
-    "description": "Ignore path part in URL",
-    "message": "Ігнорувати частину шляху в URL вкладки"
-  },
-  "ignoreSearchPart": {
-    "description": "Ignore search part in URL",
-    "message": "Ігнорувати частину пошуку в URL вкладки"
-  },
-  "keepNewerTab": {
-    "description": "Keep newer tab",
-    "message": "Зберегти новішу вкладку"
-  },
-  "keepOlderTab": {
-    "description": "Keep older tab",
-    "message": "Зберегти старішу вкладку"
-  },
-  "keepPinnedTab": {
-    "description": "Keep pinned tab",
-    "message": "Зберегти закріплену вкладку"
-  },
-  "keepReloadOlderTab": {
-    "description": "Keep and reload older tab",
-    "message": "Зберегти й оновити старішу вкладку"
-  },
-  "keepTabWithHistory": {
-    "description": "Keep tab with history",
-    "message": "Зберегти вкладку з історією"
-  },
-  "keeptabwithHttps": {
-    "description": "Keep tab with https",
-    "message": "Зберегти вкладку з https"
-  },
-  "matchingRules": {
-    "description": "Matching rules",
-    "message": "Matching rules"
-  },
-  "moreOptions": {
-    "description": "More options...",
-    "message": "More options..."
-  },
-  "noDuplicateTabs": {
-    "description": "No duplicate tabs",
-    "message": "Вкладок-дублікатів наразі нема"
-  },
-  "onDuplicateTabDetected": {
-    "description": "On duplicate tab detected",
-    "message": "Якщо виявлено дублікат вкладки"
-  },
-  "onRemainingTab": {
-    "description": "On remaining tab",
-    "message": "Вкладку, що залишилася..."
-  },
-  "options": {
-    "description": "Options",
-    "message": "Опції"
-  },
-  "scope": {
-    "description": "Scope",
-    "message": "Межі пошуку"
-  },
-  "showBadgeIfNoDuplicateTabs": {
-    "description": "Show badge if no duplicate tab",
-    "message": "Показувати значок коли дублікатів немає"
-  },
-  "showPanel": {
-    "description": "Show panel",
-    "message": "Показати панель"
-  },
-  "shrunkMode": {
-    "description": "Shrunk mode\nWhen activated, hide unpinned options.",
-    "message": "Shrunk mode:\nWhen activated, hide unpinned options."
-  },
-  "tabPriority": {
-    "description": "Priority",
-    "message": "Пріоритет"
-  },
-  "whiteList": {
-    "description": "Whitelisted URLs",
-    "message": "ホワイトリスト"
-  }
+	"activateKeptTab": {
+		"description": "Activate",
+		"message": "Зробити активною"
+	},
+	"activewindow": {
+		"description": "Active window",
+		"message": "Активне вікно"
+	},
+	"allwindows": {
+		"description": "All windows",
+		"message": "Всі вікна"
+	},
+	"autoCloseTab": {
+		"description": "Close tab automatically",
+		"message": "Закрити вкладку автоматично"
+	},
+	"badgeColorDuplicateTabs": {
+		"description": "Badge color for duplicate tabs",
+		"message": "Колір значка наявності дублікатів"
+	},
+	"badgeColorNoDuplicateTabs": {
+		"description": "Badge color for no duplicate tab",
+		"message": "Колір значка відсутності дублікатів"
+	},
+	"caseInsensitive": {
+		"description": "Ignore case in URL",
+		"message": "Ignore case in URL"
+	},
+	"closeAllDuplicateTabs": {
+		"description": "Close all",
+		"message": "Закрити всі дублікати вкладок"
+	},
+	"closePopup": {
+		"description": "Close popup panel after closing duplicate tabs",
+		"message": "Close popup panel after closing duplicate tabs"
+	},
+	"compareWithTitle": {
+		"description": "Compare with title",
+		"message": "Порівняти заголовки вкладок"
+	},
+	"containerActivewindow": {
+		"description": "Container in active window",
+		"message": "Container in active window"
+	},
+	"containerAllwindows": {
+		"description": "Container in all windows",
+		"message": "Container in all windows"
+	},
+	"customization": {
+		"description": "Customization",
+		"message": "Налаштування"
+	},
+	"defaultTabBehavior": {
+		"description": "Default tab behaviour",
+		"message": "Поведінка вкладки за замовчуванням"
+	},
+	"doNothing": {
+		"description": "Do nothing",
+		"message": "Нічого не робити"
+	},
+	"duplicatetabs": {
+		"description": "Duplicate tabs",
+		"message": "Дублікати вкладок"
+	},
+	"groupDuplicateTabs": {
+		"description": "Group duplicate tabs",
+		"message": "Group duplicate tabs"
+	},
+	"hideWhiteListedDuplicateTabs": {
+		"description": "Hide whitelisted duplicate tabs",
+		"message": "Hide whitelisted duplicate tabs"
+	},
+	"ignore3w": {
+		"description": "Ignore 'www' in URL domain name",
+		"message": "Ignore 'www' in URL domain name"
+	},
+	"ignoreHashPart": {
+		"description": "Ignore hash part in URL",
+		"message": "Ігнорувати хеш-частину в URL вкладки"
+	},
+	"ignorePathPart": {
+		"description": "Ignore path part in URL",
+		"message": "Ігнорувати частину шляху в URL вкладки"
+	},
+	"ignoreSearchPart": {
+		"description": "Ignore search part in URL",
+		"message": "Ігнорувати частину пошуку в URL вкладки"
+	},
+	"keepNewerTab": {
+		"description": "Keep newer tab",
+		"message": "Зберегти новішу вкладку"
+	},
+	"keepOlderTab": {
+		"description": "Keep older tab",
+		"message": "Зберегти старішу вкладку"
+	},
+	"keepPinnedTab": {
+		"description": "Keep pinned tab",
+		"message": "Зберегти закріплену вкладку"
+	},
+	"keepReloadOlderTab": {
+		"description": "Keep and reload older tab",
+		"message": "Зберегти й оновити старішу вкладку"
+	},
+	"keepTabWithHistory": {
+		"description": "Keep tab with history",
+		"message": "Зберегти вкладку з історією"
+	},
+	"keeptabwithHttps": {
+		"description": "Keep tab with https",
+		"message": "Зберегти вкладку з https"
+	},
+	"matchingRules": {
+		"description": "Matching rules",
+		"message": "Matching rules"
+	},
+	"moreOptions": {
+		"description": "More options...",
+		"message": "More options..."
+	},
+	"noDuplicateTabs": {
+		"description": "No duplicate tabs",
+		"message": "Вкладок-дублікатів наразі нема"
+	},
+	"onDuplicateTabDetected": {
+		"description": "On duplicate tab detected",
+		"message": "Якщо виявлено дублікат вкладки"
+	},
+	"onRemainingTab": {
+		"description": "On remaining tab",
+		"message": "Вкладку, що залишилася..."
+	},
+	"options": {
+		"description": "Options",
+		"message": "Опції"
+	},
+	"scope": {
+		"description": "Scope",
+		"message": "Межі пошуку"
+	},
+	"showBadgeIfNoDuplicateTabs": {
+		"description": "Show badge if no duplicate tab",
+		"message": "Показувати значок коли дублікатів немає"
+	},
+	"showPanel": {
+		"description": "Show panel",
+		"message": "Показати панель"
+	},
+	"shrunkMode": {
+		"description": "Shrunk mode\nWhen activated, hide unpinned options.",
+		"message": "Shrunk mode:\nWhen activated, hide unpinned options."
+	},
+	"tabPriority": {
+		"description": "Priority",
+		"message": "Пріоритет"
+	},
+	"whiteList": {
+		"description": "Whitelisted URLs",
+		"message": "ホワイトリスト"
+	}
 }
