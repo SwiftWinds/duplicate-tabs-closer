@@ -18,15 +18,15 @@ const matchTitle = (tab1, tab2) => {
 	return false;
 };
 
-const getHttpsTabId = (observedTab, observedTabUrl, openedTab) => {
+const getHttpsTabId = (observedTab, observedTabUrl, openTab) => {
 	if (options.keepTabWithHttps) {
 		const regex = /^https:\/\//i;
 		const match1 = regex.test(observedTabUrl);
-		const match2 = regex.test(openedTab.url);
+		const match2 = regex.test(openTab.url);
 		if (match1) {
 			return match2 ? null : observedTab.id;
 		} else {
-			return match2 ? openedTab.id : null;
+			return match2 ? openTab.id : null;
 		}
 	}
 	return null;
@@ -43,57 +43,52 @@ const getPinnedTabId = (tab1, tab2) => {
 	return null;
 };
 
-const getLastUpdatedTabId = (observedTab, openedTab) => {
+const getLastUpdatedTabId = (observedTab, openTab) => {
 	const observedTabLastUpdate = tabsInfo.getLastComplete(observedTab.id);
-	const openedTabLastUpdate = tabsInfo.getLastComplete(openedTab.id);
+	const openTabLastUpdate = tabsInfo.getLastComplete(openTab.id);
 	if (options.keepNewerTab) {
 		if (observedTabLastUpdate === null) return observedTab.id;
-		if (openedTabLastUpdate === null) return openedTab.id;
-		return observedTabLastUpdate > openedTabLastUpdate
+		if (openTabLastUpdate === null) return openTab.id;
+		return observedTabLastUpdate > openTabLastUpdate
 			? observedTab.id
-			: openedTab.id;
+			: openTab.id;
 	} else {
-		if (observedTabLastUpdate === null) return openedTab.id;
-		if (openedTabLastUpdate === null) return observedTab.id;
-		return observedTabLastUpdate < openedTabLastUpdate
+		if (observedTabLastUpdate === null) return openTab.id;
+		if (openTabLastUpdate === null) return observedTab.id;
+		return observedTabLastUpdate < openTabLastUpdate
 			? observedTab.id
-			: openedTab.id;
+			: openTab.id;
 	}
 };
 
-const getFocusedTab = (
-	observedTab,
-	openedTab,
-	activeWindowId,
-	retainedTabId,
-) => {
+const getFocusedTab = (observedTab, openTab, activeWindowId, retainedTabId) => {
 	if (retainedTabId === observedTab.id) {
-		return openedTab.windowId === activeWindowId &&
-			(openedTab.active || observedTab.windowId !== activeWindowId)
-			? openedTab.id
+		return openTab.windowId === activeWindowId &&
+			(openTab.active || observedTab.windowId !== activeWindowId)
+			? openTab.id
 			: observedTab.id;
 	} else {
 		return observedTab.windowId === activeWindowId &&
-			(observedTab.active || openedTab.windowId !== activeWindowId)
+			(observedTab.active || openTab.windowId !== activeWindowId)
 			? observedTab.id
-			: openedTab.id;
+			: openTab.id;
 	}
 };
 
 const getCloseInfo = (details) => {
 	const observedTab = details.observedTab;
 	const observedTabUrl = details.observedTabUrl || observedTab.url;
-	const openedTab = details.openedTab;
+	const openTab = details.openTab;
 	const activeWindowId = details.activeWindowId;
-	let retainedTabId = getPinnedTabId(observedTab, openedTab);
+	let retainedTabId = getPinnedTabId(observedTab, openTab);
 	if (!retainedTabId) {
-		retainedTabId = getHttpsTabId(observedTab, observedTabUrl, openedTab);
+		retainedTabId = getHttpsTabId(observedTab, observedTabUrl, openTab);
 		if (!retainedTabId) {
-			retainedTabId = getLastUpdatedTabId(observedTab, openedTab);
+			retainedTabId = getLastUpdatedTabId(observedTab, openTab);
 			if (activeWindowId) {
 				retainedTabId = getFocusedTab(
 					observedTab,
-					openedTab,
+					openTab,
 					activeWindowId,
 					retainedTabId,
 				);
@@ -103,20 +98,20 @@ const getCloseInfo = (details) => {
 	if (retainedTabId == observedTab.id) {
 		const keepInfo = {
 			observedTabClosed: false,
-			active: openedTab.active,
-			tabIndex: openedTab.index,
+			active: openTab.active,
+			tabIndex: openTab.index,
 			tabId: observedTab.id,
 			windowId: observedTab.windowId,
 			reloadTab: false,
 		};
-		return [openedTab.id, keepInfo];
+		return [openTab.id, keepInfo];
 	} else {
 		const keepInfo = {
 			observedTabClosed: true,
 			active: observedTab.active,
 			tabIndex: observedTab.index,
-			tabId: openedTab.id,
-			windowId: openedTab.windowId,
+			tabId: openTab.id,
+			windowId: openTab.windowId,
 			reloadTab: options.keepReloadOlderTab ? true : false,
 		};
 		return [observedTab.id, keepInfo];
@@ -143,37 +138,35 @@ const searchForDuplicateTabsToClose = async (
 		queryInfo.cookieStoreId = options.searchPerContainer
 			? observedTab.cookieStoreId
 			: null;
-	const openedTabs = await getTabs(queryInfo);
-	if (openedTabs.length > 1) {
-		const matchingObservedTabUrl = getMatchingURL(observedTabUrl);
-		let match = false;
-		for (const openedTab of openedTabs) {
-			if (
-				openedTab.id === observedTab.id ||
-				tabsInfo.isIgnoredTab(openedTab.id) ||
-				(isBlankURL(openedTab.url) && !isTabComplete(openedTab))
-			)
-				continue;
-			if (
-				getMatchingURL(openedTab.url) === matchingObservedTabUrl ||
-				matchTitle(openedTab, observedTab)
-			) {
-				match = true;
-				const [tabToCloseId, remainingTabInfo] = getCloseInfo({
-					observedTab: observedTab,
-					observedTabUrl: observedTabUrl,
-					openedTab: openedTab,
-				});
-				closeDuplicateTab(tabToCloseId, remainingTabInfo);
-				if (remainingTabInfo.observedTabClosed) break;
-			}
+	const openTabs = await getTabs(queryInfo);
+	const matchingObservedTabUrl = getMatchingURL(observedTabUrl);
+	let match = false;
+	for (const openTab of openTabs) {
+		if (
+			openTab.id === observedTab.id ||
+			tabsInfo.isIgnoredTab(openTab.id) ||
+			(isBlankURL(openTab.url) && !isTabComplete(openTab))
+		)
+			continue;
+		if (
+			getMatchingURL(openTab.url) === matchingObservedTabUrl ||
+			matchTitle(openTab, observedTab)
+		) {
+			match = true;
+			const [tabToCloseId, remainingTabInfo] = getCloseInfo({
+				observedTab: observedTab,
+				observedTabUrl: observedTabUrl,
+				openTab: openTab,
+			});
+			closeDuplicateTab(tabToCloseId, remainingTabInfo);
+			if (remainingTabInfo.observedTabClosed) break;
 		}
-		if (!match) {
-			if (tabsInfo.hasDuplicateTabs(observedWindowsId))
-				refreshDuplicateTabsInfo(observedWindowsId);
-			else if (environment.isChrome && observedTab.active)
-				setBadge(observedTab.windowId, observedTab.id);
-		}
+	}
+	if (!match) {
+		if (tabsInfo.hasDuplicateTabs(observedWindowsId))
+			refreshDuplicateTabsInfo(observedWindowsId);
+		else if (environment.isChrome && observedTab.active)
+			setBadge(observedTab.windowId, observedTab.id);
 	}
 };
 
@@ -243,7 +236,7 @@ const handleObservedTab = (details) => {
 		if (details.closeTab) {
 			const [tabToCloseId] = getCloseInfo({
 				observedTab: observedTab,
-				openedTab: retainedTab,
+				openTab: retainedTab,
 				activeWindowId: details.activeWindowId,
 			});
 			if (tabToCloseId === observedTab.id) {
@@ -253,10 +246,11 @@ const handleObservedTab = (details) => {
 				retainedTabs.set(matchingKey, observedTab);
 			}
 		} else {
-			const tabs =
-				duplicateTabsGroups.get(matchingKey) || new Set([retainedTab]);
-			tabs.add(observedTab);
-			duplicateTabsGroups.set(matchingKey, tabs);
+			const tabs = duplicateTabsGroups.get(matchingKey);
+			duplicateTabsGroups.set(
+				matchingKey,
+				tabs ? tabs.add(observedTab) : new Set([retainedTab, observedTab]),
+			);
 		}
 	}
 };
@@ -265,20 +259,20 @@ const handleObservedTab = (details) => {
 const searchForDuplicateTabs = async (windowId, closeTabs) => {
 	const queryInfo = { windowType: "normal" };
 	if (!options.searchInAllWindows) queryInfo.windowId = windowId;
-	const [activeWindowId, openedTabs] = await Promise.all([
+	const [activeWindowId, openTabs] = await Promise.all([
 		getActiveWindowId(),
 		getTabs(queryInfo),
 	]);
 	const duplicateTabsGroups = new Map();
 	const retainedTabs = new Map();
-	for (const openedTab of openedTabs) {
+	for (const openTab of openTabs) {
 		if (
-			(isBlankURL(openedTab.url) && !isTabComplete(openedTab)) ||
-			tabsInfo.isIgnoredTab(openedTab.id)
+			(isBlankURL(openTab.url) && !isTabComplete(openTab)) ||
+			tabsInfo.isIgnoredTab(openTab.id)
 		)
 			continue;
 		const details = {
-			tab: openedTab,
+			tab: openTab,
 			retainedTabs: retainedTabs,
 			activeWindowId: activeWindowId,
 			closeTab: closeTabs,
@@ -312,36 +306,36 @@ const setDuplicateTabPanel = async (duplicateTab, duplicateTabs) => {
 	let containerColor = "";
 	if (
 		environment.isFirefox &&
-		!duplicateTab.incognito &&
-		duplicateTab.cookieStoreId !== "firefox-default"
+		!tab.incognito &&
+		tab.cookieStoreId !== "firefox-default"
 	) {
 		const getContext = await browser.contextualIdentities.get(
-			duplicateTab.cookieStoreId,
+			tab.cookieStoreId,
 		);
 		if (getContext) containerColor = getContext.color;
 	}
 	duplicateTabs.add({
-		id: duplicateTab.id,
-		url: duplicateTab.url,
-		title: duplicateTab.title || duplicateTab.url,
-		windowId: duplicateTab.windowId,
+		id: tab.id,
+		url: tab.url,
+		title: tab.title || tab.url,
+		windowId: tab.windowId,
 		containerColor: containerColor,
-		icon: duplicateTab.favIconUrl || "../images/default-favicon.png",
+		icon: tab.favIconUrl || "../images/default-favicon.png",
 	});
 };
 
-const getDuplicateTabsForPanel = async (duplicateTabsGroups) => {
+const getPanelDuplicateTabs = async (duplicateTabsGroups) => {
 	if (duplicateTabsGroups.size === 0) return null;
-	const duplicateTabsPanel = new Set();
-	for (const tabsGroup of duplicateTabsGroups) {
-		const duplicateTabs = tabsGroup[1];
+	const duplicateTabs = new Set();
+	for (const groupTab of duplicateTabsGroups) {
+		const duplicateGroupTabs = groupTab[1];
 		await Promise.all(
-			Array.from(duplicateTabs, (duplicateTab) =>
-				setDuplicateTabPanel(duplicateTab, duplicateTabsPanel),
+			Array.from(duplicateGroupTabs, (duplicateTab) =>
+				setDuplicateTabPanel(duplicateTab, duplicateTabs),
 			),
 		);
 	}
-	return Array.from(duplicateTabsPanel);
+	return Array.from(duplicateTabs);
 };
 
 // eslint-disable-next-line no-unused-vars
@@ -351,7 +345,7 @@ const requestDuplicateTabsFromPanel = async (windowId) => {
 };
 
 const sendDuplicateTabs = async (duplicateTabsGroups) => {
-	const duplicateTabs = await getDuplicateTabsForPanel(duplicateTabsGroups);
+	const duplicateTabs = await getPanelDuplicateTabs(duplicateTabsGroups);
 	chrome.runtime.sendMessage({
 		action: "updateDuplicateTabsTable",
 		data: { duplicateTabs: duplicateTabs },

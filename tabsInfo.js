@@ -8,24 +8,22 @@ class TabsInfo {
 	}
 
 	async initialize() {
-		const openedTabs = await getTabs({ windowType: "normal" });
-		for (const openedTab of openedTabs) {
-			this.setOpenedTab(openedTab);
+		const openTabs = await getTabs({ windowType: "normal" });
+		for (const openTab of openTabs) {
+			this.setNewTab(openTab, true);
 		}
 	}
 
-	setNewTab(tabId) {
-		const tab = { url: null, lastComplete: null, ignored: false };
-		this.tabs.set(tabId, tab);
+	setNewTab(openTab, init) {
+		const tab = init
+			? { url: openTab.url, lastComplete: Date.now(), ignored: false }
+			: { url: null, lastComplete: null, ignored: false };
+		this.tabs.set(openTab.id, tab);
 	}
 
-	setOpenedTab(openedTab) {
-		const tab = {
-			url: openedTab.url,
-			lastComplete: Date.now(),
-			ignored: false,
-		};
-		this.tabs.set(openedTab.id, tab);
+	isIgnoredTab(tabId) {
+		const tab = this.tabs.get(tabId);
+		return !tab || tab.ignored ? true : false;
 	}
 
 	ignoreTab(tabId, state) {
@@ -34,30 +32,29 @@ class TabsInfo {
 		this.tabs.set(tabId, tab);
 	}
 
-	isIgnoredTab(tabId) {
-		const tab = this.tabs.get(tabId);
-		return !tab || tab.ignored ? true : false;
-	}
-
 	getLastComplete(tabId) {
 		const tab = this.tabs.get(tabId);
 		return tab.lastComplete;
 	}
 
-	updateTab(openedTab) {
-		const tab = this.tabs.get(openedTab.id);
-		tab.url = openedTab.url;
+	updateTab(openTab) {
+		const tab = this.tabs.get(openTab.id);
+		tab.url = openTab.url;
 		tab.lastComplete = Date.now();
-		this.tabs.set(openedTab.id, tab);
+		this.tabs.set(openTab.id, tab);
 	}
 
 	resetTab(tabId) {
-		this.setNewTab(tabId);
+		const tab = this.tabs.get(tabId);
+		tab.url = null;
+		tab.lastComplete = null;
+		if (tab.ignored) console.warn("resetTab tab ignored", tab);
+		this.tabs.set(tabId, tab);
 	}
 
-	hasUrlChanged(openedTab) {
-		const tab = this.tabs.get(openedTab.id);
-		return tab.url !== openedTab.url;
+	hasUrlChanged(openTab) {
+		const tab = this.tabs.get(openTab.id);
+		return tab.url !== openTab.url;
 	}
 
 	removeTab(tabId) {

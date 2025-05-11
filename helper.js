@@ -77,7 +77,7 @@ const updateWindow = (windowId, updateProperties) =>
 	});
 
 const getActiveTab = async (windowId) => {
-	const tabs = await getTabs({ windowId: windowId, active: true });
+	const tabs = await getTabs({ windowId, active: true });
 	return tabs ? tabs[0] : null;
 };
 
@@ -159,7 +159,7 @@ const removeTab = (tabId) =>
 // eslint-disable-next-line no-unused-vars
 const setIcon = (details) =>
 	new Promise((resolve) => {
-		chrome.browserAction.setIcon(details, () => {
+		chrome.action.setIcon(details, () => {
 			if (chrome.runtime.lastError)
 				console.error("setIcon error:", chrome.runtime.lastError.message);
 			resolve();
@@ -169,7 +169,7 @@ const setIcon = (details) =>
 // eslint-disable-next-line no-unused-vars
 const getTabBadgeText = (tabId) =>
 	new Promise((resolve) => {
-		chrome.browserAction.getBadgeText({ tabId: tabId }, (badgeText) => {
+		chrome.action.getBadgeText({ tabId }, (badgeText) => {
 			if (chrome.runtime.lastError)
 				console.error(
 					"getTabBadgeText error:",
@@ -181,7 +181,7 @@ const getTabBadgeText = (tabId) =>
 
 // eslint-disable-next-line no-unused-vars
 const getWindowBadgeText = (windowId) =>
-	browser.browserAction.getBadgeText({ windowId: windowId });
+	browser.browserAction.getBadgeText({ windowId });
 
 // eslint-disable-next-line no-unused-vars
 const setTabBadgeText = (tabId, text) =>
@@ -191,7 +191,7 @@ const setTabBadgeText = (tabId, text) =>
 			resolve();
 			return;
 		}
-		chrome.browserAction.setBadgeText({ tabId: tabId, text: text }, () => {
+		chrome.action.setBadgeText({ text, tabId }, () => {
 			if (chrome.runtime.lastError)
 				console.error(
 					"setTabBadgeText error:",
@@ -203,30 +203,24 @@ const setTabBadgeText = (tabId, text) =>
 
 // eslint-disable-next-line no-unused-vars
 const setWindowBadgeText = (windowId, text) =>
-	browser.browserAction.setBadgeText({ windowId: windowId, text: text });
+	chrome.action.setBadgeText({ windowId, text });
 
 // eslint-disable-next-line no-unused-vars
 const setTabBadgeBackgroundColor = (tabId, color) =>
 	new Promise((resolve) => {
-		chrome.browserAction.setBadgeBackgroundColor(
-			{ tabId: tabId, color: color },
-			() => {
-				if (chrome.runtime.lastError)
-					console.error(
-						"setTabBadgeBackgroundColor error:",
-						chrome.runtime.lastError.message,
-					);
-				resolve();
-			},
-		);
+		chrome.action.setBadgeBackgroundColor({ tabId, color }, () => {
+			if (chrome.runtime.lastError)
+				console.error(
+					"setTabBadgeBackgroundColor error:",
+					chrome.runtime.lastError.message,
+				);
+			resolve();
+		});
 	});
 
 // eslint-disable-next-line no-unused-vars
 const setWindowBadgeBackgroundColor = (windowId, color) =>
-	browser.browserAction.setBadgeBackgroundColor({
-		windowId: windowId,
-		color: color,
-	});
+	chrome.action.setBadgeBackgroundColor({ windowId, color });
 
 // eslint-disable-next-line no-unused-vars
 const getStoredOptions = () =>
@@ -330,7 +324,7 @@ const sendMessage = (action, data) =>
 	new Promise((resolve, reject) => {
 		const CHROME_SEND_MESSAGE_CALLBACK_NO_RESPONSE_MESSAGE =
 			"The message port closed before a response was received.";
-		chrome.runtime.sendMessage({ action: action, data: data }, (response) => {
+		chrome.runtime.sendMessage({ action, data }, (response) => {
 			if (chrome.runtime.lastError) {
 				if (
 					chrome.runtime.lastError.message ===

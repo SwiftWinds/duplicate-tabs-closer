@@ -2,7 +2,7 @@
 
 // eslint-disable-next-line no-unused-vars
 const setBadgeIcon = () => {
-	chrome.browserAction.setIcon({
+	chrome.action.setIcon({
 		path: options.autoCloseTab
 			? "images/auto_close_16.png"
 			: "images/manual_close_16.png",

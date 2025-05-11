@@ -199,10 +199,10 @@ const setEnvironment = (storedOptions) => {
 
 // eslint-disable-next-line no-unused-vars
 const isPanelOptionOpen = () => {
-	const popups = chrome.extension.getViews({ type: "popup" });
-	if (popups.length) return true;
-	const tabs = chrome.extension.getViews({ type: "tab" });
-	return tabs.length > 0;
+	//  const popups = chrome.extension.getViews({ type: "popup" });
+	//  if (popups.length) return true;
+	//  const tabs = chrome.extension.getViews({ type: "tab" });
+	//  return tabs.length > 0;
 };
 
 const whiteListToPattern = (whiteList) => {
