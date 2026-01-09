@@ -90,10 +90,12 @@ const setupDefaultOptions = async () => {
 
 const getEnvironment = async () => {
 	const info = await getPlatformInfo();
+	// InstallTrigger is deprecated; use browser API presence check instead
+	const isFirefox = typeof browser !== "undefined" && browser.runtime?.getBrowserInfo;
 	const environment =
 		info.os === "android"
 			? "android"
-			: typeof InstallTrigger !== "undefined"
+			: isFirefox
 				? "firefox"
 				: "chrome";
 	return environment;
@@ -199,10 +201,10 @@ const setEnvironment = (storedOptions) => {
 
 // eslint-disable-next-line no-unused-vars
 const isPanelOptionOpen = () => {
-	//  const popups = chrome.extension.getViews({ type: "popup" });
-	//  if (popups.length) return true;
-	//  const tabs = chrome.extension.getViews({ type: "tab" });
-	//  return tabs.length > 0;
+	// In MV3, chrome.extension.getViews() is not available in service workers.
+	// We always return true and let the message sending handle the case
+	// where no popup/tab is open to receive the message.
+	return true;
 };
 
 const whiteListToPattern = (whiteList) => {

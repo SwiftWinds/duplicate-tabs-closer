@@ -181,7 +181,7 @@ const getTabBadgeText = (tabId) =>
 
 // eslint-disable-next-line no-unused-vars
 const getWindowBadgeText = (windowId) =>
-	browser.browserAction.getBadgeText({ windowId });
+	browser.action.getBadgeText({ windowId });
 
 // eslint-disable-next-line no-unused-vars
 const setTabBadgeText = (tabId, text) =>

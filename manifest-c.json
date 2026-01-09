@@ -1,7 +1,7 @@
 {
-	"manifest_version": 2,
+	"manifest_version": 3,
 	"name": "Duplicate Tabs Closer",
-	"version": "3.6.1",
+	"version": "4.0.0",
 	"author": "Peuj",
 	"default_locale": "en",
 	"description": "Duplicate Tabs Closer",
@@ -9,19 +9,9 @@
 		"48": "images/auto_close_32.png"
 	},
 	"background": {
-		"scripts": [
-			"helper.js",
-			"tabsInfo.js",
-			"options.js",
-			"urlUtils.js",
-			"badge.js",
-			"worker.js",
-			"messageListener.js",
-			"background.js"
-		]
+		"service_worker": "background-chrome.js"
 	},
-	"browser_action": {
-		"browser_style": false,
+	"action": {
 		"default_icon": {
 			"16": "images/auto_close_16.png",
 			"32": "images/auto_close_32.png"

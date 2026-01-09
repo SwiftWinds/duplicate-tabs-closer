@@ -2,9 +2,9 @@
 	"manifest_version": 3,
 	"name": "Duplicate Tabs Closer (SwiftWinds [Peuj])",
 	"author": "SwiftWinds <- Peuj",
-	"permissions": ["tabs", "webNavigation", "storage", "background"],
+	"permissions": ["tabs", "webNavigation", "storage"],
 	"background": {
-		"service_worker": "background.js"
+		"service_worker": "background-chrome.js"
 	},
 	"action": {
 		"browser_style": false,

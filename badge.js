@@ -8,7 +8,7 @@ const setBadgeIcon = () => {
 			: "images/manual_close_16.png",
 	});
 	if (environment.isFirefox)
-		browser.browserAction.setBadgeTextColor({ color: "white" });
+		browser.action.setBadgeTextColor({ color: "white" });
 };
 
 const setBadge = async (windowId, activeTabId) => {
