@@ -1,5 +1,9 @@
 "use strict";
 
+import { getStoredOptions } from "./helper.js";
+import { setStoredOption, registerPanel } from "./options.js";
+import { requestDuplicateTabsFromPanel, closeDuplicateTabs } from "./worker.js";
+
 const handleMessage = (message, sender, response) => {
     switch (message.action) {
         case "setStoredOption": {
@@ -21,4 +25,14 @@ const handleMessage = (message, sender, response) => {
     }
 };
 
-chrome.runtime.onMessage.addListener(handleMessage);
+// Set up message listeners
+export const setupMessageListeners = () => {
+    chrome.runtime.onMessage.addListener(handleMessage);
+    
+    // Handle panel connections for service worker compatibility
+    chrome.runtime.onConnect.addListener((port) => {
+        if (port.name === "panel") {
+            registerPanel(port);
+        }
+    });
+};

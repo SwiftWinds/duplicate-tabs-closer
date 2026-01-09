@@ -1,12 +1,17 @@
 "use strict";
 
-// eslint-disable-next-line no-unused-vars
-const setBadgeIcon = () => {
-	chrome.browserAction.setIcon({ path: options.autoCloseTab ? "images/auto_close_16.png" : "images/manual_close_16.png" });
-	if (environment.isFirefox) browser.browserAction.setBadgeTextColor({ color: "white" });
+import { getActiveTabId, getWindows, setTabBadgeText, setTabBadgeBackgroundColor, setWindowBadgeText, setWindowBadgeBackgroundColor } from "./helper.js";
+import { options, environment } from "./options.js";
+import { tabsInfo } from "./tabsInfo.js";
+
+export const setBadgeIcon = () => {
+	chrome.action.setIcon({ path: options.autoCloseTab ? "images/auto_close_16.png" : "images/manual_close_16.png" });
+	if (environment.isFirefox) {
+		chrome.action.setBadgeTextColor({ color: "white" });
+	}
 };
 
-const setBadge = async (windowId, activeTabId) => {
+export const setBadge = async (windowId, activeTabId) => {
 	let nbDuplicateTabs = tabsInfo.getNbDuplicateTabs(windowId);
 	if (nbDuplicateTabs === "0" && !options.showBadgeIfNoDuplicateTabs) nbDuplicateTabs = "";
 	const backgroundColor = (nbDuplicateTabs !== "0") ? options.badgeColorDuplicateTabs : options.badgeColorNoDuplicateTabs;
@@ -15,7 +20,6 @@ const setBadge = async (windowId, activeTabId) => {
 		setWindowBadgeBackgroundColor(windowId, backgroundColor);
 	}
 	else {
-		// eslint-disable-next-line no-param-reassign
 		activeTabId = activeTabId || await getActiveTabId(windowId);
 		if (activeTabId) {
 			setTabBadgeText(activeTabId, nbDuplicateTabs);
@@ -37,20 +41,22 @@ const updateBadgeValue = (nbDuplicateTabs, windowId) => {
 	setBadge(windowId);
 };
 
-// eslint-disable-next-line no-unused-vars
-const updateBadgesValue = async (duplicateTabsGroups, windowId) => {
+export const updateBadgesValue = async (duplicateTabsGroups, windowId) => {
 	const nbDuplicateTabs = getNbDuplicateTabs(duplicateTabsGroups);
 	if (options.searchInAllWindows) {
 		const windows = await getWindows();
-		windows.forEach(window => updateBadgeValue(nbDuplicateTabs, window.id));
+		if (windows) {
+			windows.forEach(window => updateBadgeValue(nbDuplicateTabs, window.id));
+		}
 	}
 	else {
 		updateBadgeValue(nbDuplicateTabs, windowId);
 	}
 };
 
-// eslint-disable-next-line no-unused-vars
-const updateBadgeStyle = async () => {
+export const updateBadgeStyle = async () => {
 	const windows = await getWindows();
-	windows.forEach(window => setBadge(window.id));
+	if (windows) {
+		windows.forEach(window => setBadge(window.id));
+	}
 };

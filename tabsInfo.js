@@ -1,17 +1,20 @@
 "use strict";
 
+import { getTabs } from "./helper.js";
+
 class TabsInfo {
 
     constructor() {
         this.tabs = new Map();
         this.nbDuplicateTabs = new Map();
-        this.initialize();
     }
 
     async initialize() {
         const openedTabs = await getTabs({ windowType: "normal" });
-        for (const openedTab of openedTabs) {
-            this.setOpenedTab(openedTab);
+        if (openedTabs) {
+            for (const openedTab of openedTabs) {
+                this.setOpenedTab(openedTab);
+            }
         }
     }
 
@@ -27,8 +30,10 @@ class TabsInfo {
 
     ignoreTab(tabId, state) {
         const tab = this.tabs.get(tabId);
-        tab.ignored = state;
-        this.tabs.set(tabId, tab);
+        if (tab) {
+            tab.ignored = state;
+            this.tabs.set(tabId, tab);
+        }
     }
 
     isIgnoredTab(tabId) {
@@ -38,14 +43,16 @@ class TabsInfo {
 
     getLastComplete(tabId) {
         const tab = this.tabs.get(tabId);
-        return tab.lastComplete;
+        return tab ? tab.lastComplete : null;
     }
 
     updateTab(openedTab) {
         const tab = this.tabs.get(openedTab.id);
-        tab.url = openedTab.url;
-        tab.lastComplete = Date.now();
-        this.tabs.set(openedTab.id, tab);
+        if (tab) {
+            tab.url = openedTab.url;
+            tab.lastComplete = Date.now();
+            this.tabs.set(openedTab.id, tab);
+        }
     }
 
     resetTab(tabId) {
@@ -54,7 +61,7 @@ class TabsInfo {
 
     hasUrlChanged(openedTab) {
         const tab = this.tabs.get(openedTab.id);
-        return tab.url !== openedTab.url;
+        return tab ? tab.url !== openedTab.url : true;
     }
 
     removeTab(tabId) {
@@ -84,5 +91,4 @@ class TabsInfo {
 
 }
 
-// eslint-disable-next-line no-unused-vars
-const tabsInfo = new TabsInfo();
+export const tabsInfo = new TabsInfo();

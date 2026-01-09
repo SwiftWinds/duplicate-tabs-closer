@@ -1,5 +1,11 @@
 "use strict";
 
+import { wait, debounce, isTabComplete, getTab, getTabs, getWindows, getActiveWindowId, activateTab, focusTab, moveTab, removeTab, reloadTab, getStoredOptions } from "./helper.js";
+import { options, environment, isPanelOptionOpen, setStoredOption, setRefreshGlobalDuplicateTabsInfo, setSetBadgeIcon, setUpdateBadgeStyle } from "./options.js";
+import { tabsInfo } from "./tabsInfo.js";
+import { isBlankURL, getMatchingURL, getMatchPatternURL } from "./urlUtils.js";
+import { setBadgeIcon, setBadge, updateBadgesValue, updateBadgeStyle } from "./badge.js";
+
 const isUrlWhiteListed = (url) => {
   const matches = options.whiteList.filter(pattern => pattern.test(url));
   return matches.length !== 0;
@@ -100,8 +106,7 @@ const getCloseInfo = (details) => {
   }
 };
 
-// eslint-disable-next-line no-unused-vars
-const searchForDuplicateTabsToClose = async (observedTab, queryComplete, loadingUrl) => {
+export const searchForDuplicateTabsToClose = async (observedTab, queryComplete, loadingUrl) => {
   const observedTabUrl = loadingUrl || observedTab.url;
   const observedWindowsId = observedTab.windowId;
   if (isUrlWhiteListed(observedTabUrl)) {
@@ -114,7 +119,7 @@ const searchForDuplicateTabsToClose = async (observedTab, queryComplete, loading
   queryInfo.windowId = options.searchInAllWindows ? null : observedWindowsId;
   if (environment.isFirefox) queryInfo.cookieStoreId = options.searchPerContainer ? observedTab.cookieStoreId : null;
   const openedTabs = await getTabs(queryInfo);
-  if (openedTabs.length > 1) {
+  if (openedTabs && openedTabs.length > 1) {
     const matchingObservedTabUrl = getMatchingURL(observedTabUrl);
     let match = false;
     for (const openedTab of openedTabs) {
@@ -216,23 +221,24 @@ const handleObservedTab = (details) => {
   }
 };
 
-// eslint-disable-next-line no-unused-vars
-const searchForDuplicateTabs = async (windowId, closeTabs) => {
+export const searchForDuplicateTabs = async (windowId, closeTabs) => {
   const queryInfo = { windowType: "normal" };
   if (!options.searchInAllWindows) queryInfo.windowId = windowId;
   const [activeWindowId, openedTabs] = await Promise.all([getActiveWindowId(), getTabs(queryInfo)]);
   const duplicateTabsGroups = new Map();
   const retainedTabs = new Map();
-  for (const openedTab of openedTabs) {
-    if ((isBlankURL(openedTab.url) && !isTabComplete(openedTab)) || tabsInfo.isIgnoredTab(openedTab.id)) continue;
-    const details = {
-      tab: openedTab,
-      retainedTabs: retainedTabs,
-      activeWindowId: activeWindowId,
-      closeTab: closeTabs,
-      duplicateTabsGroups: duplicateTabsGroups,
-    };
-    handleObservedTab(details);
+  if (openedTabs) {
+    for (const openedTab of openedTabs) {
+      if ((isBlankURL(openedTab.url) && !isTabComplete(openedTab)) || tabsInfo.isIgnoredTab(openedTab.id)) continue;
+      const details = {
+        tab: openedTab,
+        retainedTabs: retainedTabs,
+        activeWindowId: activeWindowId,
+        closeTab: closeTabs,
+        duplicateTabsGroups: duplicateTabsGroups,
+      };
+      handleObservedTab(details);
+    }
   }
   if (!closeTabs) {
     return {
@@ -242,10 +248,9 @@ const searchForDuplicateTabs = async (windowId, closeTabs) => {
   }
 };
 
-// eslint-disable-next-line no-unused-vars
-const closeDuplicateTabs = (windowId) => searchForDuplicateTabs(windowId, true);
+export const closeDuplicateTabs = (windowId) => searchForDuplicateTabs(windowId, true);
 
-const toggleAutoClose = async () => {
+export const toggleAutoClose = async () => {
   const { storedOptions } = await getStoredOptions();
   let value = storedOptions["onDuplicateTabDetected"].value;
   if (value === "A") {
@@ -282,8 +287,7 @@ const getDuplicateTabsForPanel = async (duplicateTabsGroups) => {
   return Array.from(duplicateTabsPanel);
 };
 
-// eslint-disable-next-line no-unused-vars
-const requestDuplicateTabsFromPanel = async (windowId) => {
+export const requestDuplicateTabsFromPanel = async (windowId) => {
   const searchResult = await searchForDuplicateTabs(windowId, false);
   sendDuplicateTabs(searchResult.duplicateTabsGroups);
 };
@@ -293,6 +297,8 @@ const sendDuplicateTabs = async (duplicateTabsGroups) => {
   chrome.runtime.sendMessage({
     action: "updateDuplicateTabsTable",
     data: { "duplicateTabs": duplicateTabs },
+  }).catch(() => {
+    // Ignore errors when popup is closed
   });
 };
 
@@ -304,14 +310,23 @@ const _refreshDuplicateTabsInfo = async (windowId) => {
   }
 };
 
-const refreshDuplicateTabsInfo = debounce(_refreshDuplicateTabsInfo, 300);
+export const refreshDuplicateTabsInfo = debounce(_refreshDuplicateTabsInfo, 300);
 
-// eslint-disable-next-line no-unused-vars
-const refreshGlobalDuplicateTabsInfo = async () => {
+export const refreshGlobalDuplicateTabsInfo = async () => {
   if (options.searchInAllWindows) {
     refreshDuplicateTabsInfo();
   } else {
     const windows = await getWindows();
-    windows.forEach(window => refreshDuplicateTabsInfo(window.id));
+    if (windows) {
+      windows.forEach(window => refreshDuplicateTabsInfo(window.id));
+    }
   }
 };
+
+// Set up late bindings for options.js
+setRefreshGlobalDuplicateTabsInfo(refreshGlobalDuplicateTabsInfo);
+setSetBadgeIcon(setBadgeIcon);
+setUpdateBadgeStyle(updateBadgeStyle);
+
+// Export badge functions for background.js
+export { setBadgeIcon, setBadge, updateBadgeStyle };

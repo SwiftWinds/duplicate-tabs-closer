@@ -1,5 +1,12 @@
 "use strict";
 
+import { getTab } from "./helper.js";
+import { options, environment, initializeOptions } from "./options.js";
+import { tabsInfo } from "./tabsInfo.js";
+import { isBlankURL, isChromeURL } from "./urlUtils.js";
+import { searchForDuplicateTabsToClose, refreshDuplicateTabsInfo, refreshGlobalDuplicateTabsInfo, closeDuplicateTabs, toggleAutoClose, setBadgeIcon, setBadge } from "./worker.js";
+import { setupMessageListeners } from "./messageListener.js";
+
 const onCreatedTab = (tab) => {
   tabsInfo.setNewTab(tab.id);
   if (tab.status === "complete" && !isBlankURL(tab.url)) {
@@ -76,10 +83,15 @@ const onCommand = (command) => {
 };
 
 const start = async () => {
-  // eslint-disable-next-line no-unused-vars
   await initializeOptions();
+  await tabsInfo.initialize();
   setBadgeIcon();
   await refreshGlobalDuplicateTabsInfo();
+  
+  // Set up message listeners
+  setupMessageListeners();
+  
+  // Tab event listeners
   chrome.tabs.onCreated.addListener(onCreatedTab);
   chrome.webNavigation.onBeforeNavigate.addListener(onBeforeNavigate);
   chrome.tabs.onAttached.addListener(onAttached);

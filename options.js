@@ -1,5 +1,7 @@
 "use strict";
 
+import { getPlatformInfo, getStoredOptions, saveStoredOptions } from "./helper.js";
+
 const defaultOptions = {
     shrunkMode: {
         value: false
@@ -82,16 +84,16 @@ const defaultOptions = {
 };
 
 const setupDefaultOptions = async () => {
-    const environment = await getEnvironment();
-    const options = Object.assign({}, defaultOptions);
-    options.environment.value = environment;
-    return options;
+    const env = await getEnvironment();
+    const opts = Object.assign({}, defaultOptions);
+    opts.environment.value = env;
+    return opts;
 };
 
 const getEnvironment = async () => {
     const info = await getPlatformInfo();
-    const environment = (info.os === "android") ? "android" : (typeof InstallTrigger !== "undefined") ? "firefox" : "chrome";
-    return environment;
+    const env = (info.os === "android") ? "android" : (typeof InstallTrigger !== "undefined") ? "firefox" : "chrome";
+    return env;
 };
 
 const getNotInReferenceKeys = (referenceKeys, keys) => {
@@ -99,11 +101,19 @@ const getNotInReferenceKeys = (referenceKeys, keys) => {
     return Array.from(referenceKeys).filter(key => !setKeys.has(key));
 };
 
-// eslint-disable-next-line no-unused-vars
-const initializeOptions = async () => {
-    const options = await getStoredOptions();
-    let storedOptions = options.storedOptions;
-    if (storedOptions.length === 0) {
+// Late binding functions - will be set after worker.js loads
+let _refreshGlobalDuplicateTabsInfo = null;
+let _setBadgeIcon = null;
+let _updateBadgeStyle = null;
+
+export const setRefreshGlobalDuplicateTabsInfo = (fn) => { _refreshGlobalDuplicateTabsInfo = fn; };
+export const setSetBadgeIcon = (fn) => { _setBadgeIcon = fn; };
+export const setUpdateBadgeStyle = (fn) => { _updateBadgeStyle = fn; };
+
+export const initializeOptions = async () => {
+    const optionsResult = await getStoredOptions();
+    let storedOptions = optionsResult.storedOptions;
+    if (Object.keys(storedOptions).length === 0) {
         const intialOptions = await setupDefaultOptions();
         storedOptions = await saveStoredOptions(intialOptions);
     } else {
@@ -113,10 +123,9 @@ const initializeOptions = async () => {
             const obsoleteKeys = getNotInReferenceKeys(storedKeys, defaultKeys);
             obsoleteKeys.forEach(key => delete storedOptions[key]);
             const missingKeys = getNotInReferenceKeys(defaultKeys, storedKeys);
-            // eslint-disable-next-line no-return-assign
             missingKeys.forEach(key => storedOptions[key] = { value: defaultOptions[key].value });
-            const environment = await getEnvironment();
-            storedOptions.environment.value = environment;
+            const env = await getEnvironment();
+            storedOptions.environment.value = env;
             storedOptions = await saveStoredOptions(storedOptions, true);
         }
     }
@@ -124,19 +133,18 @@ const initializeOptions = async () => {
     setEnvironment(storedOptions);
 };
 
-// eslint-disable-next-line no-unused-vars
-const setStoredOption = async (name, value, refresh) => {
-    const options = await getStoredOptions();
-    const storedOptions = options.storedOptions;
+export const setStoredOption = async (name, value, refresh) => {
+    const optionsResult = await getStoredOptions();
+    const storedOptions = optionsResult.storedOptions;
     storedOptions[name].value = value;
     saveStoredOptions(storedOptions);
     setOptions(storedOptions);
-    if (refresh) refreshGlobalDuplicateTabsInfo();
-    else if (name === "onDuplicateTabDetected") setBadgeIcon();
-    else if (name === "showBadgeIfNoDuplicateTabs" || name === "badgeColorNoDuplicateTabs" || name === "badgeColorDuplicateTabs") updateBadgeStyle();
+    if (refresh && _refreshGlobalDuplicateTabsInfo) _refreshGlobalDuplicateTabsInfo();
+    else if (name === "onDuplicateTabDetected" && _setBadgeIcon) _setBadgeIcon();
+    else if ((name === "showBadgeIfNoDuplicateTabs" || name === "badgeColorNoDuplicateTabs" || name === "badgeColorDuplicateTabs") && _updateBadgeStyle) _updateBadgeStyle();
 };
 
-const options = {};
+export const options = {};
 
 const setOptions = (storedOptions) => {
     options.autoCloseTab = storedOptions.onDuplicateTabDetected.value === "A";
@@ -160,7 +168,7 @@ const setOptions = (storedOptions) => {
     options.showBadgeIfNoDuplicateTabs = storedOptions.showBadgeIfNoDuplicateTabs.value;
 };
 
-const environment = {
+export const environment = {
     isAndroid: false,
     isFirefox: false,
     isChrome: false
@@ -170,6 +178,7 @@ const setEnvironment = (storedOptions) => {
     if (storedOptions.environment.value === "android") {
         environment.isAndroid = true;
         environment.isFirefox = false;
+        environment.isChrome = false;
     } else if (storedOptions.environment.value === "firefox") {
         environment.isAndroid = false;
         environment.isFirefox = true;
@@ -182,18 +191,26 @@ const setEnvironment = (storedOptions) => {
     }
 };
 
-// eslint-disable-next-line no-unused-vars
-const isPanelOptionOpen = () => {
-    const popups = chrome.extension.getViews({ type: "popup" });
-    if (popups.length) return true;
-    const tabs = chrome.extension.getViews({ type: "tab" });
-    return tabs.length > 0;
+// Track connected popup/options panels for service worker compatibility
+// In MV3, chrome.extension.getViews() is not available in service workers
+const connectedPanels = new Set();
+
+export const registerPanel = (port) => {
+    connectedPanels.add(port);
+    port.onDisconnect.addListener(() => {
+        connectedPanels.delete(port);
+    });
+};
+
+export const isPanelOptionOpen = () => {
+    return connectedPanels.size > 0;
 };
 
 const whiteListToPattern = (whiteList) => {
     const whiteListPatterns = new Set();
     const whiteListLines = whiteList.split("\n").map(line => line.trim());
     whiteListLines.forEach(whiteListLine => {
+        if (!whiteListLine) return;
         const length = whiteListLine.length;
         let pattern = "^";
         for (let index = 0; index < length; index += 1) {
